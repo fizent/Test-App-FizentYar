@@ -1,0 +1,521 @@
+@import "leaflet/dist/leaflet.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+h1,h2,h3,h4,h5,h6,p,div,button {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: white;
+}
+p {
+  color: rgb(0, 136, 255);
+  font-weight: 700;
+}
+
+.btak {
+  color: rgb(149, 149, 255);
+}
+
+.Text_welcome {
+  text-align: center;
+}
+
+
+.Container_Page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  animation: gradientMove 5s ease infinite;
+
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.Container_Box_Service {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+
+.container_welcomeText {
+  margin-bottom: 150px;
+}
+
+.Box_Service {
+  padding: 20px;
+  margin: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.Box_Service:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1024px) {
+  .sider {
+    display: none !important;
+  }
+  .menu-toggle-btn {
+    display: none;
+  }
+
+  .Width_image_box {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+
+
+
+
+/* Chat Ai Class */
+
+.BodyChat {
+  background-color: #0f0c29;
+  width: 100vw;
+  height: 100vh;  /* ارتفاع کامل صفحه */
+  display: flex;
+  flex-direction: column;  /* چیدمان عمودی برای بخش‌های داخل */
+}
+
+.containerAiChat {
+  padding-top: 80px;
+  padding-bottom: 30px;
+  flex-grow: 1; /* به container اجازه می‌دهد که فضای باقی‌مانده را پر کند */
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.TextEaChat {  
+  width: 50%; /* عرض کامل */  
+  height: 150px; /* ارتفاع دلخواه */  
+  padding: 10px; /* فاصله داخلی */  
+  border: 1px solid #ccc; /* مرز با رنگ ملایم */  
+  border-radius: 8px; /* گوشه‌های گرد */  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* سایه ملایم */  
+  resize: none; /* غیرقابل تغییر ابعاد */  
+  outline: none; /* عدم استفاده از حاشیه هنگام فوکوس */  
+  background-color: #f9f9f9; /* رنگ پس‌زمینه ملایم */  
+  transition: border-color 0.3s; /* انیمیشن برای تغییر رنگ مرز */  
+}  
+
+.TextEaChat:focus {  
+  border-color: rgb(0, 0, 153);
+  border-width: 5px; /* رنگ مرز هنگام فوکوس */  
+  background-color: #fff; /* تغییر رنگ پس‌زمینه هنگام فوکوس */  
+}  
+
+.BtnSend {
+  width: 50px;
+  height: 150px;
+  background-color: blue;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  transition: transform 1s;
+  cursor: pointer;
+}
+
+
+
+.BtnSend:hover {
+  transform: scale(0.9);
+}
+
+.chatItem {
+  margin-bottom: 15px; /* ایجاد فاصله بین پیام‌ها */
+  padding: 15px;       /* ایجاد فضای داخلی برای راحتی خواندن */
+  border: 1px solid blue; /* خط مرزی بین پیام‌ها */
+  border-radius: 5px; /* گرد کردن گوشه‌ها */
+  background-color: #302b63;
+}
+
+.answerBox {
+  background: none;
+  padding: 20px; /* فضای داخلی بیشتر برای box */
+  max-height: 80vh; /* تنظیم حداکثر ارتفاع برای جلوگیری از overflow */
+  overflow-y: auto; /* برای اسکرول کردن اگر پیام‌ها زیاد شدند */
+  flex-grow: 1; /* این به container اجازه می‌دهد فضای باقی‌مانده را پر کند */
+}
+
+
+#pAnswer {
+  padding-top: 10px;
+}
+
+.btn_Audio {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+}
+
+
+
+/* Audio To Text */
+.Container_btnAudio {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#padding_Item {
+  padding-bottom: 40px;
+}
+
+.youAnswer{
+  color: white;
+}
+
+.p_copy {
+  cursor: pointer;
+  user-select: none;
+
+}
+
+#copy {
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+  text-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  background-color: #3498db;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* weather */
+.Info_box_weather {
+  position: absolute;
+  top: 200px; /* موقعیت عمودی */
+  left: 50%; /* موقعیت افقی */
+  transform: translate(-50%, -50%); /* جابجایی برای دقیقا وسط بودن */
+  background-color: #302b6393;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
+}
+
+.form_weather {
+  display: flex;
+}
+
+.info_h2 {
+  padding: 5px;
+}
+
+.input_weather {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid #8e44ad;
+  background-color: #f1f1f1;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  width: 70%;
+  max-width: 500px;
+  margin: 10px 0;
+}
+
+.input_weather:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.input_weather::placeholder {
+  color: #302b63;
+  font-style: italic;
+}
+
+#temperature {
+  color: #00305e; /* رنگ ملایم آبی برای وضعیت آب و هوا */
+}
+
+#weather {
+  color: #201dff; /* رنگ ملایم صورتی برای دما */
+
+}
+
+#description {
+  color: white; /* رنگ ملایم سبز برای توضیحات */
+}
+
+.info_h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+
+#btn_color_weather {
+  background-color: #302b63;
+}
+
+#btn_back {
+  width: 50px;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* about */
+.about-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #0f172a, #1e293b); /* Dark Blue Gradient */
+  padding: 40px;
+}
+
+.about-box {
+  background-color: #302b63;
+  padding: 40px;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid #24243e;
+}
+
+.about-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #3498db; /* Cyan-Blue Accent */
+  margin-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.about-text {
+  color: #f1f5f9; /* Light Gray for readability */
+  line-height: 1.9;
+  text-align: justify;
+}
+
+
+
+/* menu mobile */
+.Link {
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+
+a {
+  color: #302b63;
+  text-decoration: none;
+}
+
+
+
+@media (min-width: 600px) and (max-width: 900px) {  
+  .Width_image_box {
+    width: 400px;
+  }
+}
+
+@media (max-width: 726px) {
+  .Container_Page {  
+    background-size: cover;  
+    background-position: right;  
+    display: block;  
+  }  
+  .container_welcomeText {
+    margin-bottom: 40px;
+    padding-top: 90px;
+
+  } 
+
+
+
+
+  .menu-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  .Text_welcome {
+    font-size: 25px;
+    padding-bottom: 20px;
+  }
+  
+  .Text_description {
+    text-align: center;
+    font-size: 18px;
+    margin: 0 20px;
+    font-size: 14px;
+    padding-top: 10px;
+  }
+
+
+  .btn_menu {
+    background-color: blue;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 3px;
+
+
+    
+  }
+  .menu_mobile {
+    background-color: var(--steel-blue);
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+  }
+
+  
+
+
+  .img_menu_toggle {
+    width: 40px;
+  }
+
+  .sider {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+    width: 100%;
+    background-color: rgba(0, 0, 58, 0.637);
+    border-left: 3px solid white;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+
+
+  }
+  .sider.active {
+    transform: translateX(0);
+  }
+
+  .sider.hidden {
+    transform: translateX(150%);
+  }
+  .text-dashbord {
+    margin-top:50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .color-text-dashbord {
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 25px;
+  }
+  .wid-logo {
+    width: 200px;
+  }
+  .wid-btn {
+    width: 30px;
+  }
+
+  .menu_mobile {
+    display: block;
+    z-index: 400;
+    top: 30px;
+
+  }
+
+  .back_size {
+    width: 60px;
+    height: 45px;
+  }
+
+
+
+  .Container_Box_Service {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  
+  .title_box {
+    text-align: center;
+    padding: 5px;
+
+  }
+
+
+
+  .Info_box_weather {
+    position: absolute;
+    top: 200px; /* موقعیت عمودی */
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
+  }
+
+  #myket {
+    width: 150px;
+  }
+
+
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .Width_image_box {
+    width: 200px;
+  }
+
+
+
+
+
+
+}
