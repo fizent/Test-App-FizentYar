@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import BackButton from "./BackButton";
 
-export default function ChatGpt(){
+export default function ChatGpt() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
-  const [conversation, setConversation] = useState([])
+  const [conversation, setConversation] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +28,8 @@ export default function ChatGpt(){
         },
         {
           headers: {
-            Authorization: "Bearer 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", // اینجا توکن خودتون رو بذارید
+            Authorization:
+              "Bearer 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",
             "Content-Type": "application/json",
             "HTTP-Referer": "https://openrouter.ai/",
             "X-Title": "OpenRouter AI",
@@ -36,28 +37,20 @@ export default function ChatGpt(){
         }
       );
 
-
       const reply = response.data.choices[0].message.content;
       setConversation((prevConversations) => [
         ...prevConversations,
         { question, answer: reply },
-      ])
+      ]);
 
-      setAnswer("")
-      
       setAnswer(reply);
     } catch (error) {
       console.error("Error", error);
-      setAnswer("Erro Pleas Try Agine");
+      setAnswer("Error: Please try again.");
     } finally {
       setLoading(false);
     }
-
-    
- 
   };
-
-
 
   return (
     <div className="BodyChat">
@@ -72,11 +65,7 @@ export default function ChatGpt(){
             placeholder="Write your question"
             rows={5}
           />
-          <button
-            className="BtnSend"
-            type="submit"
-            disabled={loading}
-          >
+          <button className="BtnSend" type="submit" disabled={loading}>
             {loading ? "Please Wait..." : "Send"}
           </button>
         </form>
@@ -87,7 +76,10 @@ export default function ChatGpt(){
         {conversation.map((conversation, index) => (
           <div key={index} className="chatItem">
             <strong className="youAnswer">Fizent Ai</strong>
-            <p id="pAnswer"><span className="youAnswer">You :</span>{conversation.answer}</p>
+            <p id="pAnswer">
+              <span className="youAnswer">You :</span>
+              {conversation.answer}
+            </p>
           </div>
         ))}
       </div>
