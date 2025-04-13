@@ -46,6 +46,11 @@ export default function ChatGpt() {
       setAnswer(reply);
     } catch (error) {
       console.error("Error", error);
+
+      const errorMessage =
+        "If your chat does not work, it means the daily usage has been exhausted. It will be recharged soon. In the future, we will provide a completely free AI system.";
+
+      setQuestion(errorMessage); // نمایش پیام در input
       setAnswer("Error: Please try again.");
     } finally {
       setLoading(false);
