@@ -395,12 +395,15 @@ a {
     padding-bottom: var(--padding-big-40);
   }
   
+  .Padding_bottom_10_Welcom {
+    padding-bottom: none;
+  }
+
   .Text_description {
     text-align: center;
     font-size: var(--font-medium);
     margin: 0 var(--padding-medium-20);
     font-size: 14px;
-    padding-top: var(--padding-small-10);
   }
 
 
