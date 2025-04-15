@@ -1,5 +1,15 @@
 @import "leaflet/dist/leaflet.css";
 
+:root {
+  --margin-medium: 10px;
+  --padding-big-40: 40px;
+  --padding-medium-20: 20px;
+  --padding-small-10: 10px;
+  --font-medium: 18px;
+  --color-white: white;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +21,7 @@ h1,h2,h3,h4,h5,h6,p,div,button {
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
 h1,h2,h3,h4,h5,h6 {
-  color: white;
+  color: var(--color-white);
 }
 p {
   color: rgb(0, 136, 255);
@@ -63,7 +73,7 @@ p {
 }
 
 .Box_Service {
-  padding: 20px;
+  padding: var(--padding-medium-20);
   margin: 2px;
   border-radius: 20px;
   cursor: pointer;
@@ -120,13 +130,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  padding-top: var(--padding-big-40);
 }
 
 .TextEaChat {  
   width: 50%; /* عرض کامل */  
   height: 150px; /* ارتفاع دلخواه */  
-  padding: 10px; /* فاصله داخلی */  
+  padding: var(--padding-small-10); /* فاصله داخلی */  
   border: 1px solid #ccc; /* مرز با رنگ ملایم */  
   border-radius: 8px; /* گوشه‌های گرد */  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* سایه ملایم */  
@@ -146,7 +156,7 @@ p {
   width: 50px;
   height: 150px;
   background-color: blue;
-  color: white;
+  color: var(--color-white);
   border: 0;
   border-radius: 8px;
   transition: transform 1s;
@@ -169,7 +179,7 @@ p {
 
 .answerBox {
   background: none;
-  padding: 20px; /* فضای داخلی بیشتر برای box */
+  padding: var(--padding-medium-20); /* فضای داخلی بیشتر برای box */
   max-height: 80vh; /* تنظیم حداکثر ارتفاع برای جلوگیری از overflow */
   overflow-y: auto; /* برای اسکرول کردن اگر پیام‌ها زیاد شدند */
   flex-grow: 1; /* این به container اجازه می‌دهد فضای باقی‌مانده را پر کند */
@@ -177,21 +187,21 @@ p {
 
 
 #pAnswer {
-  padding-top: 10px;
+  padding-top: var(--padding-small-10);
 }
 
 .btn_Audio {
   width: 100px;
   height: 40px;
-  margin: 10px;
+  margin: var(--margin-medium);
 }
 
 
 
 /* Audio To Text */
 .Container_btnAudio {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: var(--padding-big-40);
+  padding-bottom: var(--padding-big-40);
 }
 
 #padding_Item {
@@ -199,7 +209,7 @@ p {
 }
 
 .youAnswer{
-  color: white;
+  color: var(--color-white);
 }
 
 .p_copy {
@@ -209,7 +219,7 @@ p {
 }
 
 #copy {
-  color: white;
+  color: var(--color-white);
   padding: 5px;
   font-size: 10px;
   text-wrap: wrap;
@@ -232,7 +242,7 @@ p {
   justify-content: center;
   align-items: center;
   width: 50%;
-  padding: 20px;
+  padding: var(--padding-medium-20);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
 }
@@ -246,15 +256,15 @@ p {
 }
 
 .input_weather {
-  padding: 10px 20px;
+  padding: var(--padding-small-10) var(--padding-medium-20);
   border-radius: 30px;
   border: 2px solid #8e44ad;
   background-color: #f1f1f1;
-  font-size: 18px;
+  font-size: var(--font-medium);
   transition: all 0.3s ease;
   width: 70%;
   max-width: 500px;
-  margin: 10px 0;
+  margin: var(--margin-medium) 0;
 }
 
 .input_weather:focus {
@@ -279,12 +289,12 @@ p {
 }
 
 #description {
-  color: white; /* رنگ ملایم سبز برای توضیحات */
+  color: var(--color-white); /* رنگ ملایم سبز برای توضیحات */
 }
 
 .info_h2 {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: var(--font-medium);
+  margin: var(--margin-medium) 0;
 }
 
 
@@ -307,12 +317,12 @@ p {
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #0f172a, #1e293b); /* Dark Blue Gradient */
-  padding: 40px;
+  padding: var(--padding-big-40);
 }
 
 .about-box {
   background-color: #302b63;
-  padding: 40px;
+  padding: var(--padding-big-40);
   max-width: 700px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -323,7 +333,7 @@ p {
   font-size: 40px;
   font-weight: bold;
   color: #3498db; /* Cyan-Blue Accent */
-  margin-bottom: 10px;
+  margin-bottom: var(--margin-medium);
   border-bottom: 2px solid #3498db;
   padding-bottom: 0.5rem;
   text-align: center;
@@ -340,9 +350,9 @@ p {
 /* menu mobile */
 .Link {
   background-color: #3498db;
-  color: white;
+  color: var(--color-white);
   border-radius: 8px;
-  margin: 10px;
+  margin: var(--margin-medium);
 }
 
 
@@ -369,7 +379,7 @@ a {
     margin-bottom: 40px;
     padding-top: 90px;
 
-  } 
+  }
 
 
 
@@ -382,15 +392,15 @@ a {
 
   .Text_welcome {
     font-size: 25px;
-    padding-bottom: 20px;
+    padding-bottom: var(--padding-big-40);
   }
   
   .Text_description {
     text-align: center;
-    font-size: 18px;
-    margin: 0 20px;
+    font-size: var(--font-medium);
+    margin: 0 var(--padding-medium-20);
     font-size: 14px;
-    padding-top: 10px;
+    padding-top: var(--padding-small-10);
   }
 
 
@@ -408,7 +418,7 @@ a {
     background-color: var(--steel-blue);
     border: 0;
     border-radius: 5px;
-    padding: 10px;
+    padding: var(--padding-small-10);
     cursor: pointer;
 
   }
@@ -425,10 +435,10 @@ a {
     height: 100vh;
     top: 0;
     z-index: 999;
-    background-color: white;
+    background-color: var(--color-white);
     width: 100%;
     background-color: rgba(0, 0, 58, 0.637);
-    border-left: 3px solid white;
+    border-left: 3px solid var(--color-white);
     transform: translateX(100%);
     transition: transform 0.5s ease-in-out;
 
@@ -448,9 +458,9 @@ a {
     text-align: center;
   }
   .color-text-dashbord {
-    color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    color: var(--color-white);
+    padding-top: var(--padding-medium-20);
+    padding-bottom: var(--padding-medium-20);
     font-size: 25px;
   }
   .wid-logo {
@@ -475,7 +485,6 @@ a {
 
 
   .Container_Box_Service {
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -494,7 +503,7 @@ a {
     position: absolute;
     top: 200px; /* موقعیت عمودی */
     width: 100%;
-    padding: 20px;
+    padding: var(--padding-medium-20);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
   }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MenuMobile from "./MenuMobile";
 import { Link } from "react-router-dom";
-import ChatGpt from "./ChatGpt";
+import ChatGpt from "./NewsToday";
 export default function MainPage() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -30,9 +30,9 @@ export default function MainPage() {
         <h2 className="Text_welcome">Please Choise Service</h2>
         <div className="Container_Box_Service">
           <div className="Box_Service">
-            <Link to='/ChatAi'>
+            <Link to='/NewsToday'>
               <img className="Width_image_box" src="/AiChat21.png" alt="" />
-              <h3 className="title_box">Chat Ai</h3>
+              <h3 className="title_box">News Ai</h3>
             </Link>
           </div>
           <div className="Box_Service">
