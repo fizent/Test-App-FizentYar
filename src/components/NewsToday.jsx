@@ -7,7 +7,7 @@ const NewsToday = () => {
   const [articles, setArticles] = useState([]);   
   const [loading, setLoading] = useState(false);  
   const [language, setLanguage] = useState("en"); 
-
+  const [tomorrow, setTomorrow] = useState("")
   const API_KEY = "26a906d409d446dc90a475193a55ffcf";
   const API_URL = "https://newsapi.org/v2/everything";
 
@@ -36,7 +36,19 @@ const NewsToday = () => {
             language: language,
           },
         });
-        setArticles(response.data.articles);
+        const fetchedArticles = response.data.articles;
+        setArticles(fetchedArticles);
+
+        if(fetchedArticles.length === 0) {
+          if(language === 'fa') {
+            setTomorrow("فردا خبرا شارژ میشه یکسری بزن حتما")
+          }
+          else if(language === 'en') {
+            setTomorrow("Tomorrow, the news will be updated. Be sure to check it out!")
+          }
+        }else {
+          setTomorrow("")
+        }
       } catch (error) {
         console.error("Error fetching the news:", error);
       } finally {
@@ -86,7 +98,7 @@ const NewsToday = () => {
             </div>
           ))
         ) : (
-          <p className="no-result" id="pAnswer">No News yet please write something</p>
+          <p className="no-result" id="pAnswer">{tomorrow || "No News yet please write something"}</p>
         )}
       </div>
     </div>

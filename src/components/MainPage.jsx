@@ -22,7 +22,7 @@ export default function MainPage() {
       </div>
       <MenuMobile isVisible={isMenuVisible} closeMenu={closeMenu} />
       <div className="container_welcomeText">
-        <h1 className="Text_welcome">Hi welcome to <b className="btak">FizentYar</b></h1>
+        <h1 className="Text_welcome Padding_bottom_10_Welcom">Hi welcome to <b className="btak">FizentYar</b></h1>
         <p className="Text_description">FizentYar for easy life and for answer best question we help to us</p>
       </div>
 

@@ -363,17 +363,21 @@ a {
 
 
 
-@media (min-width: 600px) and (max-width: 900px) {  
+@media (min-width: 800px) and (max-width: 900px) {  
   .Width_image_box {
     width: 400px;
+  }
+  .Container_Page {
+    height: 100vh;
   }
 }
 
 @media (max-width: 726px) {
   .Container_Page {  
     background-size: cover;  
-    background-position: right;  
-    display: block;  
+    background-position: right;
+    height: 100vh; 
+    padding-bottom: var(--padding-big-40); 
   }  
   .container_welcomeText {
     margin-bottom: 40px;
@@ -530,4 +534,15 @@ a {
 
 
 
+}
+
+
+@media (max-width: 480px)  {
+  .Container_Page {
+    height: 100%;
+  }
+
+  .Text_description {
+    margin: 0;
+  }
 }
