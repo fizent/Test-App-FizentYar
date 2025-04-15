@@ -11,7 +11,7 @@ export default defineConfig({
         enabled: true
       },
       manifest: {
-        name: "Funny Calculator",
+        name: "FizentYar",
         short_name: "PWA App",
         description: "A React PWA built with Vite",
         theme_color: "#ffffff",
