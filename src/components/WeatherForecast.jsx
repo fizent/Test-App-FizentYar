@@ -12,7 +12,7 @@ export default function WeatherForecast() {
   const [weather, setWeather] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
-  const [lat, setLat] = useState(35.6892); // Tehran
+  const [lat, setLat] = useState(35.6892); // تهران
   const [lon, setLon] = useState(51.389);
 
   const api_key = "fafcba43f3b1b1681918474e5aa6eabe"; // کلید رایگان OpenWeather
@@ -95,7 +95,7 @@ export default function WeatherForecast() {
         setLon(coord.lon);
       }
     } else {
-      setError("Please Enter City/Country");
+      setError("لطفاً نام شهر یا کشور را وارد کنید.");
     }
   };
 
@@ -113,29 +113,29 @@ export default function WeatherForecast() {
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <BackButton />
       <div className="Info_box_weather">
-        <h1>Weather Forecast</h1>
+        <h1>پیش‌بینی وضعیت آب و هوا</h1>
         <form className="form_weather" onSubmit={HandleSubmit}>
           <input
             className="input_weather"
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            placeholder="Please Enter City/Country"
+            placeholder="لطفاً نام شهر یا کشور را وارد کنید"
           />
           <button className="BtnSend btn_Audio" id="btn_color_weather" type="submit">
-            Get Weather
+            دریافت آب‌وهوا
           </button>
         </form>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className="info_weather">
           <h2 className="info_h2" id="temperature">
-            Temperature: {temp}°C
+            دما: {temp}°C
           </h2>
           <h2 className="info_h2" id="weather">
-            Weather: <img src={weatherIcons[weather] || weatherIcons.Clear} alt={weather} width="20" height="20" /> {weather}
+            وضعیت: <img src={weatherIcons[weather] || weatherIcons.Clear} alt={weather} width="20" height="20" /> {weather}
           </h2>
           <h2 className="info_h2" id="description">
-            Description: {description}
+            توضیحات: {description}
           </h2>
         </div>
       </div>

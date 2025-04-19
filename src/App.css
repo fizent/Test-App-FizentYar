@@ -9,6 +9,9 @@
   --color-white: white;
 }
 
+body {
+  direction: rtl;
+}
 
 * {
   margin: 0;
@@ -28,6 +31,19 @@ p {
   font-weight: 700;
 }
 
+.back_header {
+  width: 100vw;
+  padding: 10px;
+  background: rgba(120, 112, 211, 0.3); /* رنگ نیمه‌شفاف */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid #0f0c29;
+  border-radius: 0;
+  position: sticky; /* یا fixed اگر می‌خوای همیشه بالا بمونه */
+  top: 0;
+}
+
+
 .btak {
   color: rgb(149, 149, 255);
 }
@@ -38,12 +54,7 @@ p {
 
 
 .Container_Page {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   animation: gradientMove 5s ease infinite;
 
@@ -93,6 +104,21 @@ p {
 }
 
 @media (min-width: 1024px) {
+  .Container_Page {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    animation: gradientMove 5s ease infinite;
+    height: 100vh;
+  
+  
+  }
+  .footer {
+    display: none;
+  }
   .sider {
     display: none !important;
   }
@@ -118,6 +144,7 @@ p {
   height: 100vh;  /* ارتفاع کامل صفحه */
   display: flex;
   flex-direction: column;  /* چیدمان عمودی برای بخش‌های داخل */
+
 }
 
 .containerAiChat {
@@ -349,54 +376,98 @@ p {
 
 /* menu mobile */
 .Link {
-  background-color: #3498db;
   color: var(--color-white);
   border-radius: 8px;
   margin: var(--margin-medium);
 }
 
 
+#site_link {
+  background-color: #3498db;
+  padding: var(--padding-small-10);
+  width: 100px;
+  border-radius: 8px;
+
+}
+
 a {
-  color: #302b63;
+  color: white;
   text-decoration: none;
 }
 
 
 
 @media (min-width: 800px) and (max-width: 900px) {  
+  .Container_Page {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    animation: gradientMove 5s ease infinite;
+  
+  }
+
   .Width_image_box {
     width: 400px;
   }
-  .Container_Page {
-    height: 100vh;
-  }
+
 }
 
 @media (max-width: 726px) {
   .Container_Page {  
     background-size: cover;  
     background-position: right;
-    height: 100vh; 
-    padding-bottom: var(--padding-big-40); 
-  }  
+  } 
+  
+  
   .container_welcomeText {
     margin-bottom: 40px;
     padding-top: 90px;
+    
+  }
+
+  .top_div_sider {
+    background-color: #4A4A8D;
+    display: flex;
+    padding-top: 60px;
+    
+
 
   }
 
+  .image_profile_app {
+    border-radius: 100%;
+    padding-left: 20px;
+  
+  }
 
+  .image_profile {
+    border-radius: 100%;
+    border: 2px solid white;
+    width: 100px;
+  }
+
+  .profile_text {
+    padding-top: var(--padding-medium-20);
+  }
+  
+  
 
 
   .menu-toggle-btn {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 0;
+    z-index: 888;
   }
 
   .Text_welcome {
     font-size: 25px;
+    padding-top: var(--padding-big-40);
     padding-bottom: var(--padding-big-40);
+
   }
   
   .Padding_bottom_10_Welcom {
@@ -412,7 +483,7 @@ a {
 
 
   .btn_menu {
-    background-color: blue;
+    background-color: #302b63;
     border: 0;
     border-radius: 8px;
     cursor: pointer;
@@ -462,13 +533,13 @@ a {
     margin-top:50px;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: start;
   }
   .color-text-dashbord {
     color: var(--color-white);
-    padding-top: var(--padding-medium-20);
-    padding-bottom: var(--padding-medium-20);
     font-size: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .wid-logo {
     width: 200px;
@@ -494,6 +565,7 @@ a {
   .Container_Box_Service {
     justify-content: center;
     align-items: center;
+    padding-bottom: var(--padding-big-40);
     
   }
 
@@ -524,6 +596,10 @@ a {
   button {
     -webkit-tap-highlight-color: transparent;
   }
+  
+  div {
+    -webkit-tap-highlight-color: transparent;
+  }
 
   .Width_image_box {
     width: 200px;
@@ -538,11 +614,88 @@ a {
 
 
 @media (max-width: 480px)  {
-  .Container_Page {
-    height: 100%;
-  }
+
 
   .Text_description {
     margin: 0;
   }
+}
+
+
+
+.footer {
+  background-color: rgba(120, 112, 211, 0.3);
+  color: white;
+  padding: 32px 16px; /* 2rem 1rem */
+  bottom: 0;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 28px; /* 1.8rem */
+  margin-bottom: 8px; /* 0.5rem */
+}
+
+.footer-description {
+  font-size: 16px; /* 1rem */
+  margin-bottom: 32px; /* 2rem */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 48px; /* 3rem */
+  margin-bottom: 32px; /* 2rem */
+  text-align: right;
+}
+
+.footer-links h4 {
+  font-size: 17px; /* 1.1rem */
+  margin-bottom: 8px; /* 0.5rem */
+  color: #f0f0f0;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px; /* 0.4rem */
+  font-size: 15px; /* 0.95rem */
+}
+
+.footer-links a {
+  color: #ffffffcc;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.footer-bottom {
+  font-size: 14px; /* 0.9rem */
+  opacity: 0.7;
+}
+
+.notif {
+  position: fixed;
+  z-index: 999;
+
+
+}
+
+.show_notif {
+  background-color: green;
+  padding: 20px;
+  border-radius: 10px;
+
 }

@@ -5,6 +5,8 @@ import WeatherForecast from './components/WeatherForecast';
 import ChangeTextToAudio from './components/Change text to audio';
 import About from './components/About';
 import Setting from './components/Setting';
+import Notification from './components/Notification';
+import InfoApp from './components/InformationApp';
 import './App.css'
 function App() {  
   return (  
@@ -16,6 +18,9 @@ function App() {
         <Route path="/WeatherForecast" element={<WeatherForecast />}></Route>
         <Route path='/About' element={<About/>}></Route>
         <Route path='/Setting' element={<Setting/>}></Route>
+        <Route path='/Notification' element={<Notification/>}></Route>
+        <Route path='/InformationApp' element={<InfoApp/>}></Route>
+
 
       </Routes>  
     </div>  
