@@ -116,6 +116,9 @@ p {
   
   
   }
+  .container_discription {
+    display: none;
+  }
   .footer {
     display: none;
   }
@@ -394,6 +397,7 @@ a {
   color: white;
   text-decoration: none;
 }
+
 
 
 
