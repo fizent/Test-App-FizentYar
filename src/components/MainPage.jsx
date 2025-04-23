@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";  
 import MenuMobile from "./MenuMobile";  
-import { Link } from "react-router-dom";  
+import { Link } from "react-router-dom";
+import DescriptionService from "./DescriptionService";
 import ChatGpt from "./NewsToday";  
 
 export default function MainPage() {  
@@ -67,6 +68,24 @@ export default function MainPage() {
           </div>  
         </div>
       </div>  
+        <div className="container_discription">
+          <h2 className="h2_dis h2_padding">خدمات ما رو بهتر بشناس</h2>
+          <DescriptionService
+            Desh3="اخبار هوش مصنوعی"
+            Desp="این ابزار به شما کمک می‌کند که با کمک هوش مصنوعی بتوانید به به‌روزترین و دقیق‌ترین اخبار دسترسی داشته باشید"
+          />
+                {/* تبدیل صوت به متن */}
+          <DescriptionService
+            Desh3="تبدیل صوت به متن"
+            Desp="کافی است فایل صوتی یا صدای زنده را بدهید؛ سرویس در چند ثانیه آن را به متن دقیق فارسی یا هر زبان دلخواه تبدیل می‌کند."
+          />
+    
+          {/* هواشناسی */}
+          <DescriptionService
+            Desh3="پیش‌بینی وضعیت هوا"
+            Desp="با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، این ابزار پیش‌بینی دقیق دما، بارش و کیفیت هوا را برای شهرهای مختلف ارائه می‌دهد."
+          />
+        </div>
       <footer className="footer">
       <div className="footer-container">
         <h2 className="footer-title">FizentYar</h2>

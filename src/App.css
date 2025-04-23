@@ -615,13 +615,28 @@ a {
 
 @media (max-width: 480px)  {
 
-
   .Text_description {
     margin: 0;
   }
 }
 
 
+.container_discription {
+  padding-top: 120px;
+  padding-bottom: 50px;
+  margin-left: var(--margin-medium);
+  margin-right: var(--margin-medium);
+}
+
+.h2_padding {
+  padding-top: var(--padding-big-40);
+  padding-bottom: var(--padding-big-40);
+}
+
+.h2_dis {
+  text-align: center;
+
+}
 
 .footer {
   background-color: rgba(120, 112, 211, 0.3);
@@ -699,3 +714,4 @@ a {
   border-radius: 10px;
 
 }
+
