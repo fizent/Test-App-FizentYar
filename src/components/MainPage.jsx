@@ -1,26 +1,10 @@
 // MainPage.jsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import DescriptionService from "./DescriptionService";
 
 export default function MainPage() {
-  /* ================= اعلان یک‌بار‌ـ‌برای‌همیشه ================= */
-  const [notif, setNotif] = useState(
-    () => localStorage.getItem("netNotifShown") !== "true"
-  );
-
-  useEffect(() => {
-    if (!notif) return;               // اگر قرار نیست چیزی نشان دهیم، هیچ کاری نکن
-
-    const timer = setTimeout(() => {
-      setNotif(false);                // حذف از صفحه
-      localStorage.setItem("netNotifShown", "true"); // علامت بزن که دیده شد
-    }, 3000);
-
-    return () => clearTimeout(timer); // پاک‌سازی در صورت آن‌مونت
-  }, [notif]);
-
   /* ================= منوی موبایل ================= */
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const toggleMenu = () => setIsMenuVisible((p) => !p);
@@ -29,13 +13,6 @@ export default function MainPage() {
   /* ================= رندر ================= */
   return (
     <div className="Container_Page">
-      {/* اعلان اینترنت */}
-      {notif && (
-        <div className="show_notif">
-          <h2>اینترنتت روشن باشه پسر!</h2>
-        </div>
-      )}
-
       {/* دکمهٔ منو */}
       <div className="menu-toggle-btn back_header">
         <button className="btn_menu" onClick={toggleMenu}>
