@@ -1,9 +1,12 @@
-import BackButton from "./BackButton";
+import { Link } from "react-router-dom";  
+import BackButton from "./BackButton";  
+
 export default function About() {  
   return (  
     <div className="about-container">  
+      {/* بخش محتوای اصلی */}  
       <div className="about-box">  
-        <BackButton />
+        <BackButton />  
         <h1 className="about-title">درباره من</h1>  
         <p className="about-text">  
           من فاضل زارع، یک توسعه‌دهنده وب و اپلیکیشن با اشتیاق و تجربه‌ای در مهندسی برق و اتوماسیون صنعتی هستم.  
@@ -14,14 +17,52 @@ export default function About() {
         </p>  
         <p>  
           وب‌سایت من{" "}  
-          <div id="site_link">
-            <a href="https://fazelzare.liara.run/" target="_blank" rel="noopener noreferrer">
-              FazelZare
-            </a>
-          </div>
+          <div id="site_link">  
+            <a  
+              href="https://fazelzare.liara.run/"  
+              target="_blank"  
+              rel="noopener noreferrer"  
+            >  
+              FazelZare  
+            </a>  
+          </div>  
         </p>  
-      </div>
-    
+      </div>  
+
+      {/* فوتر با آیکون‌ها */}  
+      <div className="absolut">  
+        <footer className="footer">  
+          <div className="footer-container">  
+            <div className="div-cursor">  
+              <Link to="/">  
+                <img  
+                  className="icon-profile"  
+                  src="/icons8-home.svg"  
+                  alt="خانه"  
+                />  
+              </Link>  
+            </div>  
+            <div className="div-cursor">  
+              <Link to="/Setting">  
+                <img  
+                  className="icon-profile"  
+                  src="/icons8-setting.svg"  
+                  alt="تنظیمات"  
+                />  
+              </Link>  
+            </div>  
+            <div className="div-cursor">  
+              <Link to="/About">  
+                <img  
+                  className="icon-profile"  
+                  src="/icons8-about.svg"  
+                  alt="درباره من"  
+                />  
+              </Link>  
+            </div>  
+          </div>  
+        </footer>  
+      </div>  
     </div>  
   );  
 }  

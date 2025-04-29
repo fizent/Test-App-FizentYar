@@ -94,9 +94,11 @@ export default function MainPage() {
           </div>  
           <div className="div-cursor">  
             <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>  
-          </div>  
+          </div>
           <div className="div-cursor">  
-            <Link to="/profile"><img className="icon-profile" src="/icon-user.svg" alt="" /></Link>  
+            <button onClick={toggleMenu} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>  
+              <img className="icon-profile" src="/icon-user.svg" alt="Profile" />  
+            </button>  
           </div>  
           <div className="div-cursor">  
             <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>  

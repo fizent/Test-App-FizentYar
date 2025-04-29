@@ -79,9 +79,6 @@ export default function ChangeTextToAudio() {
               <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>
             </div>
             <div className="div-cursor">
-              <Link to="/profile"><img className="icon-profile" src="/icon-user.svg" alt="" /></Link>
-            </div>
-            <div className="div-cursor">
               <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>
             </div>
           </div>

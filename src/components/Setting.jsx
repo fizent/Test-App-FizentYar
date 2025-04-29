@@ -53,6 +53,21 @@ export default function Setting() {
           </ul>
         </div>
       </div>
+      <div className="absolut">
+        <footer className="footer">
+          <div className="footer-container">
+            <div className="div-cursor">
+              <Link to="/"><img className="icon-profile" src="/icons8-home.svg" alt="" /></Link>
+            </div>
+            <div className="div-cursor">
+              <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>
+            </div>
+            <div className="div-cursor">
+              <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

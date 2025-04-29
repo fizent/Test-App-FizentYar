@@ -11,8 +11,15 @@
 
 body {
   direction: rtl;
-}
 
+  
+}
+body::-webkit-scrollbar {  
+  background-color: #4A4A8D; /* رنگ پس‌زمینه نوار اسکرول */  
+}
+body::-webkit-scrollbar-thumb {  
+  background-color: #302b63;  
+}    
 * {
   margin: 0;
   padding: 0;
