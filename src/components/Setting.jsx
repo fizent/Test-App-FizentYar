@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import BackButton from "./BackButton";
+
 export default function Setting() {
   const [privacy, setPrivacy] = useState(false);  // وضعیت حریم خصوصی
   const [notifications, setNotifications] = useState(false);  // وضعیت اعلان‌ها
@@ -15,6 +17,7 @@ export default function Setting() {
   return (
     <div className="about-container">
       <div className="about-box">
+        <BackButton />
         <h1 className="about-title">تنظیمات</h1>
         <p className="about-text">
           این برنامه وب به گونه‌ای طراحی شده است که کاملاً از طریق آنلاین مدیریت و به‌روزرسانی می‌شود تا کاربران همیشه به جدیدترین ویژگی‌ها و بهبودها دسترسی داشته باشند. هدف ما این است که تجربه شما را با هر به‌روزرسانی روان‌تر و هوشمندتر کنیم.

@@ -88,44 +88,20 @@ export default function MainPage() {
 
       {/* فوتر */}
       <footer className="footer">
-        <div className="footer-container">
-          <h2 className="footer-title">FizentYar</h2>
-          <p className="footer-description">
-            دوست هوشمند شما برای انجام کارهای روزمره با قدرت هوش مصنوعی
-          </p>
-
-          <div className="footer-links">
-            <div>
-              <h4>لینک‌ها</h4>
-              <ul>
-                <li>
-                  <Link to="/About">درباره ما</Link>
-                </li>
-                <li>
-                  <Link to="/Setting">تنظیمات</Link>
-                </li>
-                <li>
-                  <a href="https://myket.ir/app/app.vercel.test_app_fizent_yar.twa">
-                    دانلود از مایکت
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4>ارتباط با ما</h4>
-              <ul>
-                <li>
-                  <a href="https://fazelzare.liara.run/">مراجعه به سایت</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <p className="footer-bottom">
-            © {new Date().getFullYear()} FizentYar - تمامی حقوق محفوظ است.
-          </p>
-        </div>
+        <div className="footer-container">  
+          <div className="div-cursor">  
+            <Link to="/"><img className="icon-profile" src="/icons8-home.svg" alt="" /></Link>  
+          </div>  
+          <div className="div-cursor">  
+            <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>  
+          </div>  
+          <div className="div-cursor">  
+            <Link to="/profile"><img className="icon-profile" src="/icon-user.svg" alt="" /></Link>  
+          </div>  
+          <div className="div-cursor">  
+            <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>  
+          </div>  
+        </div>  
       </footer>
     </div>
   );

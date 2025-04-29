@@ -1,7 +1,9 @@
+import BackButton from "./BackButton";
 export default function About() {  
   return (  
     <div className="about-container">  
       <div className="about-box">  
+        <BackButton />
         <h1 className="about-title">درباره من</h1>  
         <p className="about-text">  
           من فاضل زارع، یک توسعه‌دهنده وب و اپلیکیشن با اشتیاق و تجربه‌ای در مهندسی برق و اتوماسیون صنعتی هستم.  
@@ -18,7 +20,8 @@ export default function About() {
             </a>
           </div>
         </p>  
-      </div>  
+      </div>
+    
     </div>  
   );  
 }  

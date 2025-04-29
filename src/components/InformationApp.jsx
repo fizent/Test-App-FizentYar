@@ -6,7 +6,7 @@ export default function InfoApp() {
           <p className="about-text">  
            در ورژن 1.0.4 هستید
           </p>  
-        </div>  
+        </div> 
       </div>  
     );  
   }  

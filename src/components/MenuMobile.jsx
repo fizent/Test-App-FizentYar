@@ -43,7 +43,8 @@ export default function MenuMobile({ isVisible, closeMenu }) {
             </a>  
           </li>  
         </ul>  
-      </div>  
+      </div> 
+       
     </div>  
   );  
 }  
