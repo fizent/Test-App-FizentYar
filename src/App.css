@@ -149,6 +149,10 @@ p {
     height: 300px;
   }
 }
+.container_textimage {
+  display: none;
+}
+
 
 
 
