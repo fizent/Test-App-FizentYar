@@ -1,18 +1,40 @@
-// MainPage.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import DescriptionService from "./DescriptionService";
+import TextImage from "./TextByImage";
 
 export default function MainPage() {
   /* ================= منوی موبایل ================= */
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const toggleMenu = () => setIsMenuVisible((p) => !p);
+  const toggleMenu = () => setIsMenuVisible((prev) => !prev);
   const closeMenu = () => setIsMenuVisible(false);
 
-  /* ================= رندر ================= */
+  /* ================= Modal مربوط به اینترنت ================= */
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowModal(true);
+    }, 3000);
+
+    return () => clearTimeout(timer); // پاک‌سازی تایمر
+  }, []);
+
   return (
     <div className="Container_Page">
+      {/* نمایش Modal بعد از 3 ثانیه */}
+      {showModal && (
+        <div style={styles.overlay}>
+          <div style={styles.modal}>
+            <p style={styles.text}>اینترنتت یادت نره!</p>
+            <button style={styles.button} onClick={() => setShowModal(false)}>
+              بستن
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* دکمهٔ منو */}
       <div className="menu-toggle-btn back_header">
         <button className="btn_menu" onClick={toggleMenu}>
@@ -66,6 +88,25 @@ export default function MainPage() {
         </div>
       </div>
 
+      {/* نمایش تصاویر و توضیحات فانتزی */}
+      <TextImage
+        title="اخبار چی میگه ؟"
+        image="/akhbar.jpg"
+        description="ربات‌ها دارن باهوش‌تر می‌شن! 🤖 اینجا همه چیز درباره‌ی آینده‌ی دیجیتال، الگوریتم‌های عجیب و تیترهای داغ منتظرته!"
+      />
+
+      <TextImage
+        title="فقط حرف بزن!"
+        image="/audio.jpg"
+        description="دیگه نیازی به تایپ نیست، چون ما جادوی تبدیل صدا به متن رو داریم! 🎤 فقط بگو، ما برات می‌نویسیم، دقیق و سریع!"
+      />
+
+      <TextImage
+        title="هوا چطوره؟ بزن بریم ببینیم!"
+        image="/weather.jpg"
+        description="هوش مصنوعی با چشم تیزبینش می‌گه قراره بارون بیاد یا آفتاب بخنده! 🌦️ پیک‌نیک یا پتو؟ تصمیم با توئه!"
+      />
+
       {/* توضیح سرویس‌ها */}
       <div className="container_discription">
         <h2 className="h2_dis h2_padding">خدمات ما رو بهتر بشناس</h2>
@@ -88,23 +129,66 @@ export default function MainPage() {
 
       {/* فوتر */}
       <footer className="footer">
-        <div className="footer-container">  
-          <div className="div-cursor">  
-            <Link to="/"><img className="icon-profile" src="/icons8-home.svg" alt="" /></Link>  
-          </div>  
-          <div className="div-cursor">  
-            <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>  
+        <div className="footer-container">
+          <div className="div-cursor">
+            <Link to="/">
+              <img className="icon-profile" src="/icons8-home.svg" alt="" />
+            </Link>
           </div>
-          <div className="div-cursor">  
-            <button onClick={toggleMenu} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>  
-              <img className="icon-profile" src="/icon-user.svg" alt="Profile" />  
-            </button>  
-          </div>  
-          <div className="div-cursor">  
-            <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>  
-          </div>  
-        </div>  
+          <div className="div-cursor">
+            <Link to="/Setting">
+              <img className="icon-profile" src="/icons8-setting.svg" alt="" />
+            </Link>
+          </div>
+          <div className="div-cursor">
+            <button
+              onClick={toggleMenu}
+              style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
+            >
+              <img className="icon-profile" src="/icon-user.svg" alt="Profile" />
+            </button>
+          </div>
+          <div className="div-cursor">
+            <Link to="/About">
+              <img className="icon-profile" src="/icons8-about.svg" alt="" />
+            </Link>
+          </div>
+        </div>
       </footer>
     </div>
   );
 }
+
+// استایل ساده برای modal
+const styles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  },
+  modal: {
+    backgroundColor: "#fff",
+    padding: "20px 30px",
+    borderRadius: "10px",
+    textAlign: "center",
+  },
+  text: {
+    fontSize: "18px",
+    marginBottom: "15px",
+  },
+  button: {
+    padding: "8px 16px",
+    borderRadius: "5px",
+    border: "none",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    cursor: "pointer",
+  },
+};

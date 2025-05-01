@@ -7,7 +7,7 @@ export default function InfoApp() {
       <BackButton /> 
       <div className="about-box">  
         <h1 className="about-title">اطلاعات برنامه</h1>  
-        <p className="about-text">در ورژن 1.0.4 هستید</p>  
+        <p className="about-text">در ورژن 3.0.0 هستید</p>  
       </div>  
       
       <div className="absolut">  

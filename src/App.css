@@ -14,17 +14,22 @@ body {
 
   
 }
+
 body::-webkit-scrollbar {  
   background-color: #4A4A8D; /* رنگ پس‌زمینه نوار اسکرول */  
 }
 body::-webkit-scrollbar-thumb {  
   background-color: #302b63;  
 }    
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
 
 
 h1,h2,h3,h4,h5,h6,p,div,button {
@@ -37,6 +42,8 @@ p {
   color: rgb(0, 136, 255);
   font-weight: 700;
 }
+
+
 
 .back_header {
   width: 100vw;
@@ -588,6 +595,29 @@ a {
 
   }
 
+  .container_textimage {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: var(--padding-medium-20);
+    align-items: center;
+  }
+
+  .image_text_width {
+    width: 100px;
+  }
+
+  .title_box_text_by_image {
+    padding-left: var(--padding-small-10);
+
+    
+
+  }
+
+  .title_box_by {
+    margin-bottom: var(--margin-medium);
+  }
 
 
   .Info_box_weather {
@@ -598,6 +628,8 @@ a {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
   }
+
+  
 
   #myket {
     width: 150px;
@@ -632,6 +664,8 @@ a {
   .Text_description {
     margin: 0;
   }
+
+  
 }
 
 
@@ -643,6 +677,7 @@ a {
 }
 
 .h2_padding {
+  border-top: 5px solid #4A4A8D;
   padding-top: var(--padding-big-40);
   padding-bottom: var(--padding-big-40);
 }
