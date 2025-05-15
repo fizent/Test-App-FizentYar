@@ -10,7 +10,6 @@
 //     console.log("Fetching:", event.request.url);
 //   });
   
-
 const CACHE_NAME = "pwa-cache-v1";
 const ASSETS_TO_CACHE = [
   "/",
@@ -28,7 +27,9 @@ const ASSETS_TO_CACHE = [
   "/Audio.png",
   "/Online-Weather-Forecast.jpg",
   "/myket.png",
-  "/FizentYar192.png"
+  "/FizentYar192.png",
+  // اگه فایل fallback دارید، اون رو هم اضافه کنید
+  "/fallback-image.png" 
 ];
 
 // نصب و کشتن
@@ -58,34 +59,36 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        return cachedResponse;
+        return cachedResponse; // پاسخ از کش
       }
-      // اگر کش نشد، تلاش کنیم شبکه
-      return fetch(event.request).then((networkResponse) => {
-        // در صورت موفقیت، کش کن برای درخواست‌های بعدی
-        if (
-          event.request.method === "GET" &&
-          networkResponse.status === 200 &&
-          networkResponse.type === "basic"
-        ) {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return networkResponse;
-      }).catch(() => {
-        // اگر نتوانست آنلاین لود کند، می‌تونی یک صفحه خطا یا آیکونی offline برگردونی
-        // مثلا:
-        // if (event.request.destination === 'image') {
-        //   return caches.match('/fallback-image.png');
-        // }
-      });
+      // درخواست شبکه
+      return fetch(event.request)
+        .then((networkResponse) => {
+          // کش کردن پاسخ‌هایی که موفقیت‌آمیز است
+          if (
+            event.request.method === "GET" &&
+            networkResponse.status === 200 &&
+            networkResponse.type === "basic"
+          ) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          // در صورت نبود اتصال اینترنت، برگرداندن fallback
+          if (event.request.destination === 'image') {
+            // تصویر fallback رو برمی‌گردونیم
+            return caches.match('/fallback-image.png');
+          }
+          // برای صفحات، می‌تونی یه صفحه خطای offline بده
+        });
     })
   );
 });
