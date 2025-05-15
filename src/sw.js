@@ -15,8 +15,8 @@ const CACHE_NAME = "pwa-cache-v1";
 const ASSETS_TO_CACHE = [
   "/",
   "/index.html",
-  "/public/Fonts/Dirooz.woff2",
-  "/public/Fonts/Dirooz.woff",
+  "/Fonts/Dirooz.woff2",
+  "/Fonts/Dirooz.woff",
   "/icons8-home.svg",
   "/icons8-setting.svg",
   "/icon-user.svg",
