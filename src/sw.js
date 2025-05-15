@@ -11,8 +11,6 @@
 //   });
   
 
-
-
 const CACHE_NAME = "pwa-cache-v1";
 const ASSETS_TO_CACHE = [
   "/",
@@ -33,6 +31,7 @@ const ASSETS_TO_CACHE = [
   "/FizentYar192.png"
 ];
 
+// نصب و کشتن
 self.addEventListener("install", (event) => {
   console.log("[ServiceWorker] Installing...");
   event.waitUntil(
@@ -46,29 +45,47 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   console.log("[ServiceWorker] Activating...");
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
             console.log("[ServiceWorker] Deleting old cache:", cache);
             return caches.delete(cache);
           }
         })
-      );
-    })
+      )
+    )
   );
 });
 
+// Fetch
 self.addEventListener("fetch", (event) => {
-  console.log("[ServiceWorker] Fetching:", event.request.url);
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(event.request).catch(() => {
-          // Optional: return fallback offline page or image
-        })
-      );
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      // اگر کش نشد، تلاش کنیم شبکه
+      return fetch(event.request).then((networkResponse) => {
+        // در صورت موفقیت، کش کن برای درخواست‌های بعدی
+        if (
+          event.request.method === "GET" &&
+          networkResponse.status === 200 &&
+          networkResponse.type === "basic"
+        ) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return networkResponse;
+      }).catch(() => {
+        // اگر نتوانست آنلاین لود کند، می‌تونی یک صفحه خطا یا آیکونی offline برگردونی
+        // مثلا:
+        // if (event.request.destination === 'image') {
+        //   return caches.match('/fallback-image.png');
+        // }
+      });
     })
   );
 });
