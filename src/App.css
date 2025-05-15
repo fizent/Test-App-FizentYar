@@ -32,13 +32,24 @@ body::-webkit-scrollbar-thumb {
 
 
 
-h1,h2,h3,h4,h5,h6,p,div,button {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+@font-face {
+  font-family: 'Dirooz';
+  src: url('/public/Fonts/Dirooz.woff') format('woff'),
+       url('/public/Fonts/Dirooz.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* برای بهینه‌سازی سرعت لود */
+}
+
+
+h1,h2,h3,h4,h5,h6,p,div {
+  font-family: Dirooz;
 }
 h1,h2,h3,h4,h5,h6 {
   color: var(--color-white);
 }
 p {
+  font-family: Dirooz;
   color: rgb(0, 136, 255);
   font-weight: 700;
 }
@@ -130,9 +141,21 @@ p {
   
   
   }
+  .about-box {
+    background-color: #302b63;
+    padding: var(--padding-big-40);
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid #24243e;
+  }
   .container_discription {
     display: none;
 
+  }
+
+  .about-container {
+    padding: var(--padding-big-40);
   }
   .footer {
     display: none;
@@ -210,6 +233,7 @@ p {
   border-radius: 8px;
   transition: transform 1s;
   cursor: pointer;
+  font-family: Dirooz;
 }
 
 
@@ -357,6 +381,7 @@ p {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 /* about */
@@ -369,14 +394,7 @@ p {
   padding: var(--padding-big-40);
 }
 
-.about-box {
-  background-color: #302b63;
-  padding: var(--padding-big-40);
-  max-width: 700px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border: 1px solid #24243e;
-}
+
 
 .about-title {
   font-size: 40px;
@@ -388,10 +406,15 @@ p {
   text-align: center;
 }
 
+li {
+  list-style: none;
+}
+
 .about-text {
   color: #f1f5f9; /* Light Gray for readability */
   line-height: 1.9;
   text-align: justify;
+  
 }
 
 
@@ -431,6 +454,14 @@ a {
     animation: gradientMove 5s ease infinite;
   
   }
+  .about-box {
+    background-color: #302b63;
+    padding: var(--padding-big-40);
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid #24243e;
+  }
 
   .Width_image_box {
     width: 400px;
@@ -449,6 +480,18 @@ a {
     margin-bottom: 40px;
     padding-top: 90px;
     
+  }
+  .about-box {
+    background-color: #302b63;
+    padding: var(--padding-medium-20);
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid #24243e;
+  }
+
+  .about-container {
+    padding: var(--padding-medium-20);
   }
 
   .top_div_sider {
@@ -652,6 +695,9 @@ a {
   .Width_image_box {
     width: 200px;
   }
+  .about-box {
+    padding: 10px;
+  }
 
 
 
@@ -667,6 +713,18 @@ a {
 
   .Text_description {
     margin: 0;
+  }
+  .about-box {
+    background-color: #302b63;
+    padding: var(--padding-medium-20);
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid #24243e;
+  }
+
+  .about-container {
+    padding: var(--padding-medium-20);
   }
 
   
@@ -695,10 +753,8 @@ a {
   bottom: 0;
   background-color: rgb(120, 112, 211);
   color: white;
-  padding: 20px 20px; /* 2rem 1rem */
   bottom: 0;
   position: sticky;
-  border-radius: 10px 10px 0 0; /* فقط گوشه‌های بالا گرد */  
 }
 
 .footer-container {
@@ -710,15 +766,35 @@ a {
 }
 
 .div-cursor {
-  display: inline;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
   transition: transform 0.5s;
+  
 }
-.div-cursor:hover {
-  transform: scale(1.1);
+.div-cursor>p {
+  color: white;
 }
 
+.div-cursor:hover {
+  transform: scale(0.9);
+  background-color: rgba(0, 0, 0, 0.13);
+}
+
+.div-cursor:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
 .icon-profile {
-  width: 30px;
+  width: 28px;
 }
 
 
@@ -746,5 +822,15 @@ a {
   padding: 20px;
   border-radius: 10px;
 
+}
+
+.Loading {
+  background-color: #0f0c29;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 

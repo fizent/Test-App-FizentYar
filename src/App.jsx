@@ -8,7 +8,27 @@ import Setting from './components/Setting';
 import Notification from './components/Notification';
 import InfoApp from './components/InformationApp';
 import './App.css'
+import { useEffect, useState } from 'react';
 function App() {  
+
+  const [load, setLoad] = useState(true)
+
+  useEffect(()=> {
+    const timeOut = setTimeout(() => {
+      setLoad(false)
+    }, 5000);
+    return ()=> clearTimeout(timeOut)
+  },[])
+
+  if(load) {
+    return(
+      <div className='Loading'>
+        <img src="/Loading.svg" alt="" />
+        <h2>FizentYar</h2>
+        <p>اینترنتت روشن باشه !</p>
+      </div>
+    )
+  }
   return (  
     <div>  
       <Routes>  

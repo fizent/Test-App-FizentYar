@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";  
 import { Link } from "react-router-dom";  
-import BackButton from "./BackButton";  
 
 export default function ChangeTextToAudio() {  
   const [text, setText] = useState('هیچ متنی وجود ندارد. لطفاً روی شروع کلیک کنید و چیزی بگویید');  
@@ -56,7 +55,6 @@ export default function ChangeTextToAudio() {
 
   return (  
     <div className="BodyChat form">  
-      <BackButton />  
       <h1>تبدیل صدا به متن</h1>  
       <div className="Container_btnAudio">  
         <button className="BtnSend btn_Audio" onClick={OpenListen} disabled={isListening}>شروع</button>  
@@ -73,13 +71,22 @@ export default function ChangeTextToAudio() {
         <footer className="footer">
           <div className="footer-container">
             <div className="div-cursor">
-              <Link to="/"><img className="icon-profile" src="/icons8-home.svg" alt="" /></Link>
+              <Link to="/">
+                <img className="icon-profile" src="/icons8-home.svg" alt="" />
+              </Link>
+              <p>خانه</p>
             </div>
             <div className="div-cursor">
-              <Link to="/Setting"><img className="icon-profile" src="/icons8-setting.svg" alt="" /></Link>
+              <Link to="/Setting">
+                <img className="icon-profile" src="/icons8-setting.svg" alt="" />
+              </Link>
+              <p>تنظیمات</p>
             </div>
             <div className="div-cursor">
-              <Link to="/About"><img className="icon-profile" src="/icons8-about.svg" alt="" /></Link>
+              <Link to="/About">
+                <img className="icon-profile" src="/icons8-about.svg" alt="" />
+              </Link>
+              <p>درباره</p>
             </div>
           </div>
         </footer>

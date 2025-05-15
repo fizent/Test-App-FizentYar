@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";  
 import { MapContainer, TileLayer, useMap } from "react-leaflet";  
 import { Link } from "react-router-dom"; // assuming you use react-router  
-import BackButton from "./BackButton";  
 
 import "leaflet/dist/leaflet.css";  
 
@@ -108,7 +107,6 @@ export default function WeatherForecast() {
 
   return (  
     <div style={{ position: "relative", minHeight: "100vh" }}>  
-      <BackButton />  
 
       {/* قسمت اطلاعات وضعیت آب و هوا */}  
       <div className="Info_box_weather">  
@@ -186,24 +184,27 @@ export default function WeatherForecast() {
       {/* فوتر */}  
       <div className="absolut">
         <footer className="footer">
-          <div className="footer-container">
-            <div className="div-cursor">
-              <Link to="/">
-                <img className="icon-profile" src="/icons8-home.svg" alt="" />
-              </Link>
+            <div className="footer-container">
+              <div className="div-cursor">
+                <Link to="/">
+                  <img className="icon-profile" src="/icons8-home.svg" alt="" />
+                </Link>
+                <p>خانه</p>
+              </div>
+              <div className="div-cursor">
+                <Link to="/Setting">
+                  <img className="icon-profile" src="/icons8-setting.svg" alt="" />
+                </Link>
+                <p>تنظیمات</p>
+              </div>
+              <div className="div-cursor">
+                <Link to="/About">
+                  <img className="icon-profile" src="/icons8-about.svg" alt="" />
+                </Link>
+                <p>درباره</p>
+              </div>
             </div>
-            <div className="div-cursor">
-              <Link to="/Setting">
-                <img className="icon-profile" src="/icons8-setting.svg" alt="" />
-              </Link>
-            </div>
-            <div className="div-cursor">
-              <Link to="/About">
-                <img className="icon-profile" src="/icons8-about.svg" alt="" />
-              </Link>
-            </div>
-          </div>
-        </footer>
+          </footer>
       </div>
     </div>  
   );  

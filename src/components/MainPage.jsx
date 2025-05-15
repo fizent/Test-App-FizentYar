@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import DescriptionService from "./DescriptionService";
 import TextImage from "./TextByImage";
-
 export default function MainPage() {
   /* ================= منوی موبایل ================= */
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -11,29 +10,11 @@ export default function MainPage() {
   const closeMenu = () => setIsMenuVisible(false);
 
   /* ================= Modal مربوط به اینترنت ================= */
-  const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 3000);
-
-    return () => clearTimeout(timer); // پاک‌سازی تایمر
-  }, []);
 
   return (
     <div className="Container_Page">
-      {/* نمایش Modal بعد از 3 ثانیه */}
-      {showModal && (
-        <div style={styles.overlay}>
-          <div style={styles.modal}>
-            <p style={styles.text}>اینترنتت یادت نره!</p>
-            <button style={styles.button} onClick={() => setShowModal(false)}>
-              بستن
-            </button>
-          </div>
-        </div>
-      )}
+
 
       {/* دکمهٔ منو */}
       <div className="menu-toggle-btn back_header">
@@ -64,7 +45,7 @@ export default function MainPage() {
       <div className="Container_Box_Service">
         <div className="Box_Service">
           <Link to="/NewsToday">
-            <img className="Width_image_box" src="/AiChat21.png" alt="" />
+            <img className="Width_image_box" src="/AiChat21.png" alt="news ai" />
             <h3 className="title_box">اخبار هوش مصنوعی</h3>
           </Link>
         </div>
@@ -74,7 +55,7 @@ export default function MainPage() {
             <img
               className="Width_image_box"
               src="/Online-Weather-Forecast.jpg"
-              alt=""
+              alt="weather forecasting"
             />
             <h3 className="title_box">پیش‌بینی آب‌وهوا</h3>
           </Link>
@@ -82,30 +63,14 @@ export default function MainPage() {
 
         <div className="Box_Service">
           <Link to="/TextToAudio">
-            <img className="Width_image_box" src="/Audio.png" alt="" />
+            <img className="Width_image_box" src="/Audio.png" alt="audio to text" />
             <h3 className="title_box">تبدیل متن به صدا</h3>
           </Link>
         </div>
       </div>
 
       {/* نمایش تصاویر و توضیحات فانتزی */}
-      <TextImage
-        title="اخبار چی میگه ؟"
-        image="/akhbar.jpg"
-        description="ربات‌ها دارن باهوش‌تر می‌شن! 🤖 اینجا همه چیز درباره‌ی آینده‌ی دیجیتال، الگوریتم‌های عجیب و تیترهای داغ منتظرته!"
-      />
 
-      <TextImage
-        title="فقط حرف بزن!"
-        image="/audio.jpg"
-        description="دیگه نیازی به تایپ نیست، چون ما جادوی تبدیل صدا به متن رو داریم! 🎤 فقط بگو، ما برات می‌نویسیم، دقیق و سریع!"
-      />
-
-      <TextImage
-        title="هوا چطوره؟ بزن بریم ببینیم!"
-        image="/weather.jpg"
-        description="هوش مصنوعی با چشم تیزبینش می‌گه قراره بارون بیاد یا آفتاب بخنده! 🌦️ پیک‌نیک یا پتو؟ تصمیم با توئه!"
-      />
 
       {/* توضیح سرویس‌ها */}
       <div className="container_discription">
@@ -126,32 +91,37 @@ export default function MainPage() {
           Desp="با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، این ابزار پیش‌بینی دقیق دما، بارش و کیفیت هوا را برای شهرهای مختلف ارائه می‌دهد."
         />
       </div>
-
       {/* فوتر */}
       <footer className="footer">
         <div className="footer-container">
           <div className="div-cursor">
             <Link to="/">
-              <img className="icon-profile" src="/icons8-home.svg" alt="" />
+              <img className="icon-profile" src="/icons8-home.svg" alt="home" />
             </Link>
+            <p>خانه</p>
           </div>
           <div className="div-cursor">
             <Link to="/Setting">
-              <img className="icon-profile" src="/icons8-setting.svg" alt="" />
+              <img className="icon-profile" src="/icons8-setting.svg" alt="setting" />
             </Link>
+            <p>تنظیمات</p>
           </div>
           <div className="div-cursor">
             <button
+            
               onClick={toggleMenu}
-              style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
+              style={{ background: "none", border: "none", padding: 0, cursor: "pointer", alignSelf: "start"}}
             >
-              <img className="icon-profile" src="/icon-user.svg" alt="Profile" />
+              <img className="icon-profile" src="/icon-user.svg" alt="profile" />
             </button>
+            <p>منو</p>
+
           </div>
           <div className="div-cursor">
             <Link to="/About">
-              <img className="icon-profile" src="/icons8-about.svg" alt="" />
+              <img className="icon-profile" src="/icons8-about.svg" alt="about" />
             </Link>
+            <p>درباره</p>
           </div>
         </div>
       </footer>
@@ -159,36 +129,3 @@ export default function MainPage() {
   );
 }
 
-// استایل ساده برای modal
-const styles = {
-  overlay: {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-  },
-  modal: {
-    backgroundColor: "#fff",
-    padding: "20px 30px",
-    borderRadius: "10px",
-    textAlign: "center",
-  },
-  text: {
-    fontSize: "18px",
-    marginBottom: "15px",
-  },
-  button: {
-    padding: "8px 16px",
-    borderRadius: "5px",
-    border: "none",
-    backgroundColor: "#007bff",
-    color: "#fff",
-    cursor: "pointer",
-  },
-};
