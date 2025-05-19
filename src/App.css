@@ -1,5 +1,4 @@
 @import "leaflet/dist/leaflet.css";
-
 :root {
   --margin-medium: 10px;
   --padding-big-40: 40px;
@@ -7,6 +6,7 @@
   --padding-small-10: 10px;
   --font-medium: 18px;
   --color-white: white;
+  --steel-blue: #4682b4; /* تعریف متغیر گمشده */
 }
 
 body {
@@ -32,10 +32,11 @@ body::-webkit-scrollbar-thumb {
 
 
 
+
 @font-face {
   font-family: 'Dirooz';
-  src: url('/public/Fonts/Dirooz.woff') format('woff'),
-       url('/public/Fonts/Dirooz.woff2') format('woff2');
+  src: url('/Fonts/Dirooz.woff') format('woff'),
+       url('/Fonts/Dirooz.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* برای بهینه‌سازی سرعت لود */
@@ -470,6 +471,16 @@ a {
 }
 
 @media (max-width: 726px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .BtnSend {
+    margin-top: var(--margin-medium);
+    height: 50px;
+    width: 100px;
+    
+  }
   .Container_Page {  
     background-size: cover;  
     background-position: right;
@@ -670,7 +681,7 @@ a {
   .Info_box_weather {
     position: absolute;
     top: 200px; /* موقعیت عمودی */
-    width: 100%;
+    width: 90%;
     padding: var(--padding-medium-20);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
@@ -727,6 +738,21 @@ a {
     padding: var(--padding-medium-20);
   }
 
+  .chatItem {
+    margin-left: 30px;
+    margin-right: 30px;
+
+  }
+
+  
+}
+
+
+@media (max-width: 380px) {
+  
+  #Text_info {
+    font-size: 25px;
+  }
   
 }
 

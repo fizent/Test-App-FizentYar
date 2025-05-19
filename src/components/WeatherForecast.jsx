@@ -110,7 +110,7 @@ export default function WeatherForecast() {
 
       {/* قسمت اطلاعات وضعیت آب و هوا */}  
       <div className="Info_box_weather">  
-        <h1>پیش‌بینی وضعیت آب و هوا</h1>  
+        <h1 id="Text_info">پیش‌بینی وضعیت آب و هوا</h1>  
         <form className="form_weather" onSubmit={HandleSubmit}>  
           <input  
             className="input_weather"  
