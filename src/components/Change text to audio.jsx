@@ -55,14 +55,14 @@ export default function ChangeTextToAudio() {
 
   return (  
     <div className="BodyChat form">  
-      <h1>تبدیل صدا به متن</h1>  
+      <h1 className="Text_welcome">تبدیل صدا به متن</h1>  
       <div className="Container_btnAudio">  
         <button className="BtnSend btn_Audio" onClick={OpenListen} disabled={isListening}>شروع</button>  
         <button className="BtnSend btn_Audio" onClick={CloseListen} disabled={!isListening}>توقف</button>  
       </div>  
       <div className="chatItem">  
-        <h2 id="padding_Item" className="Text_welcome">متن شما</h2>  
-        <p className="p_copy" onClick={HandleCopy}>  
+        <h2 id="padding_Item" className="H2_font">متن شما</h2>  
+        <p className="Text_description" onClick={HandleCopy}>  
           {text}  
           <span id="copy">{copy ? "کپی شد!" : "برای کپی کلیک کنید!"}</span>  
         </p>  
