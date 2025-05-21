@@ -41,7 +41,7 @@ export default function MainPage() {
       </div>
 
       {/* باکس سرویس‌ها */}
-      <h2 className="Text_welcome">لطفاً خدمات ما را انتخاب کنید</h2>
+      <h2 className="Text_welcome H2_font">لطفاً خدمات ما را انتخاب کنید</h2>
       <div className="Container_Box_Service">
         <div className="Box_Service">
           <Link to="/NewsToday">
@@ -74,7 +74,7 @@ export default function MainPage() {
 
       {/* توضیح سرویس‌ها */}
       <div className="container_discription">
-        <h2 className="h2_dis h2_padding">خدمات ما رو بهتر بشناس</h2>
+        <h2 className="h2_dis h2_padding H2_font">خدمات ما رو بهتر بشناس</h2>
 
         <DescriptionService
           Desh3="اخبار هوش مصنوعی"
