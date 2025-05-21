@@ -13,8 +13,8 @@ export default function MenuMobile({ isVisible, closeMenu }) {
           <img src="/FizentYar192.png" alt="" className="image_profile"/>
         </div>
         <div className="profile_text">
-          <h1>FizentYar</h1>
-          <p>دوست هوشمند شما</p>
+          <h1 className="profile_name">FizentYar</h1>
+          <p className="">دوست هوشمند شما</p>
         </div>
       </div>
       <div className="text-dashbord"> 
