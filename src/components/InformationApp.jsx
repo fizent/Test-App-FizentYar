@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';  
-
+import Back_Btn from './Back';
 export default function InfoApp() {  
   return (  
     <div className="about-container">  
-      <div className="back_btn">
-        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
-      </div>
+      <Back_Btn />
 
       <div className="about-box">  
         <h1 className="about-title">اطلاعات برنامه</h1>  

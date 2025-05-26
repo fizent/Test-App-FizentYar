@@ -156,11 +156,11 @@ p {
 }
 
 .footer {
-  bottom: 0;
+  width: 100%;
   background-color: #0f172a;
   color: white;
   bottom: 0;
-  position: sticky;
+  position: fixed;
   
 }
 

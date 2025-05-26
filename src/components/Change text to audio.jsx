@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";  
 import { Link } from "react-router-dom";  
-
+import Back_Btn from "./Back";
 export default function ChangeTextToAudio() {  
   const [text, setText] = useState('هیچ متنی وجود ندارد. لطفاً روی شروع کلیک کنید و چیزی بگویید');  
   const [isListening, setIsListening] = useState(false);  
@@ -55,10 +55,8 @@ export default function ChangeTextToAudio() {
   };  
 
   return (  
-    <div className="BodyChat form">  
-      <div className="back_btn">
-        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
-      </div>
+    <div className="BodyChat form"> 
+      <Back_Btn /> 
       <h1 className="Text_welcome">تبدیل صدا به متن</h1>  
       <div className="Container_btnAudio">  
         <button className="BtnSend btn_Audio" onClick={OpenListen} disabled={isListening}>شروع</button>  

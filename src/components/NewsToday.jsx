@@ -1,7 +1,7 @@
 import React, { useState } from "react";  
 import axios from "axios";  
 import { Link } from "react-router-dom";  
-
+import Back_Btn from "./Back";
 const NewsToday = () => {  
   const [query, setQuery] = useState("");  
   const [articles, setArticles] = useState([]);  
@@ -51,10 +51,7 @@ const NewsToday = () => {
 
   return (
     <div className="BodyChat">
-      <div className="back_btn">
-        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
-      </div>
-
+      <Back_Btn />
       {/* قسمت جستجو */}
       <div className="containerAiChat">
         <h2 className="Text_welcome">📰 دستیار اخبار (Fizent)</h2>

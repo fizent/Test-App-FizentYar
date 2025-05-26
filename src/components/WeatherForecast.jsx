@@ -2,9 +2,8 @@ import axios from "axios";
 import { useState } from "react";  
 import { MapContainer, TileLayer, useMap } from "react-leaflet";  
 import { Link } from "react-router-dom"; // assuming you use react-router  
-
+import Back_Btn from "./Back";
 import "leaflet/dist/leaflet.css";  
-
 export default function WeatherForecast() {  
   const [city, setCity] = useState("");  
   const [main, setMain] = useState("");  
@@ -107,10 +106,7 @@ export default function WeatherForecast() {
 
   return (  
     <div style={{ position: "relative", minHeight: "100vh" }}>  
-      <div className="back_btn">
-        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
-      </div>
-
+      <Back_Btn />
       {/* قسمت اطلاعات وضعیت آب و هوا */}  
       <div className="Info_box_weather">  
         <h1 id="Text_info">پیش‌بینی وضعیت آب و هوا</h1>  
