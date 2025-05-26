@@ -5,7 +5,7 @@ export default function Back_Btn() {
 
   return (
     <div className="back_btn" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
-      <img className="back_image" src="/icons8-back-arrow-64.png" alt="Back" />
+      <img className="back_image" src="/src/assets/icons8-back-arrow-64.png" alt="Back" />
     </div>
   );
 }
