@@ -29,7 +29,11 @@ const ASSETS_TO_CACHE = [
   "/myket.png",
   "/FizentYar192.png",
   // اگه فایل fallback دارید، اون رو هم اضافه کنید
-  "/fallback-image.png" 
+  "/fallback-image.png",
+  "/icons8-back-arrow-64.png",
+  "/cloudy-night-3.svg",
+  "/rainy-2.svg",
+  "/Loading.svg"
 ];
 
 // نصب و کشتن

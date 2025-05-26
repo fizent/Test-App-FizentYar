@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 export default function About() {  
   return (  
     <div className="about-container">  
+      <div className="back_btn">
+        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
+      </div>
       {/* بخش محتوای اصلی */}  
       <div className="about-box">  
         <h1 className="about-title">درباره من</h1>  
         <p className="about-text">  
-          من فاضل زارع، یک توسعه‌دهنده وب و اپلیکیشن با اشتیاق و تجربه‌ای در مهندسی برق و اتوماسیون صنعتی هستم.  
+          من فاضل زارع، یک توسعه‌دهنده وب و اپلیکیشن با اشتیاق و محصل در رشته برق و اتوماسیون صنعتی هستم.  
           هدف من ایجاد راه‌حل‌های دیجیتال مدرن، هوشمند و ساده است که زندگی را برای همه آسان‌تر کند.  
           <br />  
           با ترکیب دانش خود در فن‌آوری و سیستم‌های الکتریکی، سعی می‌کنم اپلیکیشن‌ها و وب‌سایت‌های قدرتمندی با طراحی زیبا و کارکرد هوشمند بسازم.  

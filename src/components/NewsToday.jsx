@@ -51,6 +51,9 @@ const NewsToday = () => {
 
   return (
     <div className="BodyChat">
+      <div className="back_btn">
+        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
+      </div>
 
       {/* قسمت جستجو */}
       <div className="containerAiChat">

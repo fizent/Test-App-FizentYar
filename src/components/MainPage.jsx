@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import MenuMobile from "./MenuMobile";
 import DescriptionService from "./DescriptionService";
 import TextImage from "./TextByImage";
+import TimeHi from "./TimeHi";
+
 export default function MainPage() {
   /* ================= منوی موبایل ================= */
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -32,40 +34,50 @@ export default function MainPage() {
 
       {/* متن خوش‌آمد */}
       <div className="container_welcomeText">
-        <h1 className="Text_welcome Padding_bottom_10_Welcom">
+        <TimeHi></TimeHi>
+        <h1 className="Text_welcome Text_start Padding_bottom_10_Welcom">
           سلام، به <b className="btak">FizentYar</b> خوش آمدید
         </h1>
-        <p className="Text_description">
+        <p className="Text_start_p Text_start">
           FizentYar برای زندگی آسان و پاسخ به بهترین سوالات به ما کمک می‌کند
         </p>
       </div>
 
-      {/* باکس سرویس‌ها */}
-      <h2 className="Text_welcome H2_font">لطفاً خدمات ما را انتخاب کنید</h2>
-      <div className="Container_Box_Service">
-        <div className="Box_Service">
-          <Link to="/NewsToday">
-            <img className="Width_image_box" src="/AiChat21.png" alt="news ai" />
-            <h3 className="title_box">اخبار هوش مصنوعی</h3>
-          </Link>
-        </div>
-
+      <div className="container_Box_Service">
+        {/* باکس جدا برای هواشناسی */}
         <div className="Box_Service">
           <Link to="/WeatherForecast">
             <img
-              className="Width_image_box"
-              src="/Online-Weather-Forecast.jpg"
+              className="Width_image_box_weather"
+              src="/rainy-2.svg"
               alt="weather forecasting"
             />
             <h3 className="title_box">پیش‌بینی آب‌وهوا</h3>
           </Link>
         </div>
 
-        <div className="Box_Service">
-          <Link to="/TextToAudio">
-            <img className="Width_image_box" src="/Audio.png" alt="audio to text" />
-            <h3 className="title_box">تبدیل متن به صدا</h3>
-          </Link>
+        {/* باکس سرویس‌های دیگر در یک Flex Container جدا */}
+        <div className="services_flex_container">
+          <div className="Box_Service Box_Service_e">
+            <Link to="/NewsToday">
+              <img
+                className="Width_image_box"
+                src="/icons8-news.svg"
+                alt="news ai"
+              />
+              <h3 className="title_box">اخبار هوش مصنوعی</h3>
+            </Link>
+          </div>
+          <div className="Box_Service Box_Service_e">
+            <Link to="/TextToAudio">
+              <img
+                className="Width_image_box"
+                src="/microphone-svgrepo-com.svg"
+                alt="audio to text"
+              />
+              <h3 className="title_box">تبدیل متن به صدا</h3>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -74,7 +86,7 @@ export default function MainPage() {
 
       {/* توضیح سرویس‌ها */}
       <div className="container_discription">
-        <h2 className="h2_dis h2_padding H2_font">خدمات ما رو بهتر بشناس</h2>
+        <h2 className="h2_dis h2_padding H2_font"></h2>
 
         <DescriptionService
           Desh3="اخبار هوش مصنوعی"
@@ -90,6 +102,11 @@ export default function MainPage() {
           Desh3="پیش‌بینی وضعیت هوا"
           Desp="با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، این ابزار پیش‌بینی دقیق دما، بارش و کیفیت هوا را برای شهرهای مختلف ارائه می‌دهد."
         />
+        <DescriptionService
+          Desh3="تولید تصیویر"
+          Desp="به زودی با قدرت کیفیت"
+        />
+
       </div>
       {/* فوتر */}
       <footer className="footer">

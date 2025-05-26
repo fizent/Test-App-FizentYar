@@ -16,6 +16,7 @@ export default function ChangeTextToAudio() {
     recognitionRef.current.continuous = false;  
     recognitionRef.current.interimResults = false;  
   }  
+  
 
   // استفاده از useEffect برای افزودن event listener  
   useEffect(() => {  
@@ -55,6 +56,9 @@ export default function ChangeTextToAudio() {
 
   return (  
     <div className="BodyChat form">  
+      <div className="back_btn">
+        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
+      </div>
       <h1 className="Text_welcome">تبدیل صدا به متن</h1>  
       <div className="Container_btnAudio">  
         <button className="BtnSend btn_Audio" onClick={OpenListen} disabled={isListening}>شروع</button>  

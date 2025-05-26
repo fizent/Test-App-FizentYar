@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 export default function InfoApp() {  
   return (  
     <div className="about-container">  
+      <div className="back_btn">
+        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
+      </div>
+
       <div className="about-box">  
         <h1 className="about-title">اطلاعات برنامه</h1>  
         <p className="about-text">در ورژن 3.0.0 هستید</p>  

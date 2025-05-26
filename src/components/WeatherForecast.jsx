@@ -107,6 +107,9 @@ export default function WeatherForecast() {
 
   return (  
     <div style={{ position: "relative", minHeight: "100vh" }}>  
+      <div className="back_btn">
+        <img className="back_image" src="/public/icons8-back-arrow-64.png" alt="" />
+      </div>
 
       {/* قسمت اطلاعات وضعیت آب و هوا */}  
       <div className="Info_box_weather">  
