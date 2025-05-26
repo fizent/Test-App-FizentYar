@@ -33,7 +33,8 @@ const ASSETS_TO_CACHE = [
   "/icons8-back-arrow-64.png",
   "/cloudy-night-3.svg",
   "/rainy-2.svg",
-  "/Loading.svg"
+  "/Loading.svg",
+  "/icons8-back-arrow-64.png"
 ];
 
 // نصب و کشتن
