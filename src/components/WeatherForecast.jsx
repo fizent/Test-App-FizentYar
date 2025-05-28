@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { Link } from "react-router-dom"; // assuming you use react-router  
 import Back_Btn from "./Back";
 import "leaflet/dist/leaflet.css";  
+import FooterCom from "./FooterC";
 export default function WeatherForecast() {  
   const [city, setCity] = useState("");  
   const [main, setMain] = useState("");  
@@ -181,30 +182,7 @@ export default function WeatherForecast() {
       </div>  
 
       {/* فوتر */}  
-      <div className="absolut">
-        <footer className="footer">
-            <div className="footer-container">
-              <div className="div-cursor">
-                <Link to="/">
-                  <img className="icon-profile" src="/icons8-home.svg" alt="" />
-                </Link>
-                <p>خانه</p>
-              </div>
-              <div className="div-cursor">
-                <Link to="/Setting">
-                  <img className="icon-profile" src="/icons8-setting.svg" alt="" />
-                </Link>
-                <p>تنظیمات</p>
-              </div>
-              <div className="div-cursor">
-                <Link to="/About">
-                  <img className="icon-profile" src="/icons8-about.svg" alt="" />
-                </Link>
-                <p>درباره</p>
-              </div>
-            </div>
-          </footer>
-      </div>
+      <FooterCom />
     </div>  
   );  
 }  

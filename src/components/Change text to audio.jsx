@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";  
 import { Link } from "react-router-dom";  
 import Back_Btn from "./Back";
+import FooterCom from "./FooterC";
 export default function ChangeTextToAudio() {  
   const [text, setText] = useState('هیچ متنی وجود ندارد. لطفاً روی شروع کلیک کنید و چیزی بگویید');  
   const [isListening, setIsListening] = useState(false);  
@@ -68,31 +69,8 @@ export default function ChangeTextToAudio() {
           {text}  
           <span id="copy">{copy ? "کپی شد!" : "برای کپی کلیک کنید!"}</span>  
         </p>  
-      </div>  
-      <div className="absolut">
-        <footer className="footer">
-          <div className="footer-container">
-            <div className="div-cursor">
-              <Link to="/">
-                <img className="icon-profile" src="/icons8-home.svg" alt="" />
-              </Link>
-              <p>خانه</p>
-            </div>
-            <div className="div-cursor">
-              <Link to="/Setting">
-                <img className="icon-profile" src="/icons8-setting.svg" alt="" />
-              </Link>
-              <p>تنظیمات</p>
-            </div>
-            <div className="div-cursor">
-              <Link to="/About">
-                <img className="icon-profile" src="/icons8-about.svg" alt="" />
-              </Link>
-              <p>درباره</p>
-            </div>
-          </div>
-        </footer>
-      </div>
+      </div> 
+      <FooterCom /> 
     </div>  
   );  
 }  
