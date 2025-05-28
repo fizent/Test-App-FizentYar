@@ -117,7 +117,7 @@ p {
 
 
 .container_welcomeText {
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 }
 
 .Box_Service {
@@ -528,6 +528,15 @@ a {
 
 
 @media (min-width: 1024px) {
+  .services_flex_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--margin-medium);
+  }
+  .Width_image_box_weather {
+    width: 200px;
+  }
     #Noke {
     display: none;
   }
@@ -570,7 +579,7 @@ a {
   }
 
   .Width_image_box {
-    width: 150px;
+    width: 120px;
   }
 }
 .container_textimage {
