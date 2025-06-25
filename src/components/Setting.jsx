@@ -2,43 +2,51 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Back_Btn from "./Back";
 import FooterCom from "./FooterC";
-export default function Setting() {
-  const [privacy, setPrivacy] = useState(false);  // وضعیت حریم خصوصی
-  const [notifications, setNotifications] = useState(false);  // وضعیت اعلان‌ها
+import { Card, CardContent, Typography } from "@mui/material";
 
-  
-  useEffect(()=>{
-    const savePrivacy = localStorage.getItem("privacy")
-    const saveNotification = localStorage.getItem("notifications")
+export default function Setting() {
+  const [privacy, setPrivacy] = useState(false); // وضعیت حریم خصوصی
+  const [notifications, setNotifications] = useState(false); // وضعیت اعلان‌ها
+
+  useEffect(() => {
+    const savePrivacy = localStorage.getItem("privacy");
+    const saveNotification = localStorage.getItem("notifications");
     if (savePrivacy !== null) setPrivacy(JSON.parse(savePrivacy));
     if (saveNotification !== null) setNotifications(JSON.parse(saveNotification));
+  }, []);
 
-  })
   const handlePrivacyChange = (e) => {
-    const check = e.target.checked
-    setPrivacy(check);  // تغییر وضعیت حریم خصوصی
-    localStorage.setItem("privacy", JSON.stringify(check))
+    const check = e.target.checked;
+    setPrivacy(check); // تغییر وضعیت حریم خصوصی
+    localStorage.setItem("privacy", JSON.stringify(check));
   };
 
   const handleNotificationsChange = (e) => {
-    const check = e.target.checked
-    setNotifications(check);  // تغییر وضعیت حریم خصوصی
-    localStorage.setItem("notifications", JSON.stringify(check))
-
+    const check = e.target.checked;
+    setNotifications(check); // تغییر وضعیت حریم خصوصی
+    localStorage.setItem("notifications", JSON.stringify(check));
   };
 
   return (
-    <div className="about-container">
+    <div className="container_card_box">
       <Back_Btn />
-      <div className="about-box">
-        <h1 className="about-title">تنظیمات</h1>
-        <p className="about-text">
-          این برنامه وب به گونه‌ای طراحی شده است که کاملاً از طریق آنلاین مدیریت و به‌روزرسانی می‌شود تا کاربران همیشه به جدیدترین ویژگی‌ها و بهبودها دسترسی داشته باشند. هدف ما این است که تجربه شما را با هر به‌روزرسانی روان‌تر و هوشمندتر کنیم.
-        </p>
-        <div className="settings-list">
-          <h3>تنظیمات موجود:</h3>
+      {/* بخش محتوای اصلی */}
+      <Card className="margR margL">
+        <CardContent>
+          <Typography className="type_mg" variant="h3">
+            تنظیمات
+          </Typography>
+          <Typography variant="subtitle1">
+            این برنامه وب به گونه‌ای طراحی شده است که کاملاً از طریق آنلاین مدیریت و
+            به‌روزرسانی می‌شود تا کاربران همیشه به جدیدترین ویژگی‌ها و بهبودها دسترسی
+            داشته باشند. هدف ما این است که تجربه شما را با هر به‌روزرسانی روان‌تر و
+            هوشمندتر کنیم.
+          </Typography>
+          <Typography variant="h5" className="type_mg">
+            تنظیمات موجود:
+          </Typography>
           <ul>
-            <li className="about-text">
+            <li className="type_mg">
               <label>
                 <input
                   type="checkbox"
@@ -48,7 +56,7 @@ export default function Setting() {
                 حریم خصوصی
               </label>
             </li>
-            <li className="about-text">
+            <li className="type_mg">
               <label>
                 <input
                   type="checkbox"
@@ -58,13 +66,15 @@ export default function Setting() {
                 مدیریت اعلان‌ها
               </label>
             </li>
-            <li>
+            <li className="type_mg">
               <Link to="/InformationApp">اطلاعات برنامه</Link>
             </li>
           </ul>
-        </div>
-      </div>
-      <FooterCom />
+        </CardContent>
+      </Card>
+
+      {/* فوتر با آیکون‌ها */}
+      {/* <FooterCom /> */}
     </div>
   );
 }

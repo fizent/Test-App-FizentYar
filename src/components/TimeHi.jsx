@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 
 export default function TimeHi() {
@@ -235,5 +236,5 @@ useEffect(()=> {
 
 },[])
 
-    return <p id="Noke" className="Text_start">{Message}</p>;
+    return <Typography variant="subtitle1" className="time_hi">{Message}</Typography>;
 }

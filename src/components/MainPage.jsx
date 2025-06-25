@@ -1,92 +1,100 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import MenuMobile from "./MenuMobile";
-import DescriptionService from "./DescriptionService";
-import TextImage from "./TextByImage";
 import TimeHi from "./TimeHi";
+import DescriptionService from "./DescriptionService";
+
+import { Box, AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import InfoIcon from "@mui/icons-material/Info";
+
+
+import { Card, CardContent } from '@mui/material';
+
 
 export default function MainPage() {
-  /* ================= منوی موبایل ================= */
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const toggleMenu = () => setIsMenuVisible((prev) => !prev);
-  const closeMenu = () => setIsMenuVisible(false);
-
-  /* ================= Modal مربوط به اینترنت ================= */
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
   return (
-    <div className="Container_Page">
+    <Box>
+      <AppBar className="container_app">
+        <Toolbar className="header_toolbar">
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleMenu}
+          >
+            <MenuIcon />
+          </IconButton>
+          <img className="logo_size" src="/FizentYar192.png" alt="Logo" />
+        </Toolbar>
+      </AppBar>
+      <Drawer sx={{ '& .MuiDrawer-paper': { backgroundColor: '1e1e1e ', color: '#ffffff' } }} anchor="right" open={isMenuOpen} onClose={toggleMenu}>
+        <Box
+          role="presentation"
+          onClick={toggleMenu}
+          onKeyDown={toggleMenu}
+        >
+        </Box>
+        <List>
+          <ListItem className="drawer" button component={RouterLink} to="/">
+            <HomeIcon sx={{ mr: 1 }} />
+            <ListItemText sx={{ mr: 2 }} primary="بازگشت" />
+          </ListItem>
+          <ListItem className="drawer" button component={RouterLink} to="/Setting">
+            <SettingsIcon sx={{ mr: 1 }} />
+            <ListItemText primary="تنظیمات" />
+          </ListItem>
 
-
-      {/* دکمهٔ منو */}
-      <div className="menu-toggle-btn back_header">
-        <button className="btn_menu" onClick={toggleMenu}>
-          <img
-            className="img_menu_toggle"
-            src="/icons8-menü.svg"
-            alt="Toggle Menu"
-          />
-        </button>
-      </div>
-
-      {/* منوی موبایل */}
-      <MenuMobile isVisible={isMenuVisible} closeMenu={closeMenu} />
-
-      {/* متن خوش‌آمد */}
-      <div className="container_welcomeText">
-        <TimeHi></TimeHi>
-        <h1 className="Text_welcome Text_start Padding_bottom_10_Welcom">
-          سلام، به <b className="btak">FizentYar</b> خوش آمدید
-        </h1>
-        <p className="Text_start_p Text_start">
-          FizentYar برای زندگی آسان و پاسخ به بهترین سوالات به ما کمک می‌کند
-        </p>
-      </div>
-
-      <div className="container_Box_Service">
-        {/* باکس جدا برای هواشناسی */}
-        <div className="Box_Service">
-          <Link to="/WeatherForecast">
-            <img
-              className="Width_image_box_weather"
-              src="/rainy-2.svg"
-              alt="weather forecasting"
-            />
-            <h3 className="title_box">پیش‌بینی آب‌وهوا</h3>
-          </Link>
-        </div>
-
-        {/* باکس سرویس‌های دیگر در یک Flex Container جدا */}
-        <div className="services_flex_container">
-          <div className="Box_Service Box_Service_e">
-            <Link to="/NewsToday">
-              <img
-                className="Width_image_box"
-                src="/icons8-news.svg"
-                alt="news ai"
-              />
-              <h3 className="title_box">اخبار هوش مصنوعی</h3>
-            </Link>
+          <ListItem className="drawer" button component={RouterLink} to="/About">
+            <InfoIcon sx={{ mr: 1 }} />
+            <ListItemText  primary="درباره" />
+          </ListItem>
+          {/* سایر لینک‌ها */}
+          <div className="div_myket_mg">
+            <a href="https://myket.ir/app/app.vercel.test_app_fizent_yar.twa">  
+              <img src="/myket.png" alt="مایکت" id="myket" />  
+            </a>  
           </div>
-          <div className="Box_Service Box_Service_e">
-            <Link to="/TextToAudio">
-              <img
-                className="Width_image_box"
-                src="/microphone-svgrepo-com.svg"
-                alt="audio to text"
-              />
-              <h3 className="title_box">تبدیل متن به صدا</h3>
-            </Link>
-          </div>
-        </div>
+      </List>
+      </Drawer>
+      <Box className="container_card">
+      <div className="mg-bt-welcome">
+        <TimeHi />
+        <Typography variant="h3">سلام به <span style={{color:"blueviolet"}}>FizentYar</span> خوش امدید</Typography>
       </div>
-
-      {/* نمایش تصاویر و توضیحات فانتزی */}
-
-
-      {/* توضیح سرویس‌ها */}
+      <Card className="Card Card_for"  component={RouterLink} to="/WeatherForecast">
+        <CardContent>
+          <div>
+            <img className="wid_ic_fo" alt="weather forecasting" src="/rainy-2.svg"></img>
+          </div>
+          <Typography variant="h6">پیش بینی اب و هوا</Typography>
+        </CardContent>
+      </Card>
+      <div className="container-center">
+        <Card className="Card margR margL" component={RouterLink} to="/NewsToday">
+          <CardContent>
+            <div>
+              <img className="width_icon" alt="weather forecasting" src="/icons8-news.svg"></img>
+            </div>
+            <Typography variant="h6">اخبار هوش مصنوعی</Typography>
+          </CardContent>
+        </Card>
+        
+        <Card className="Card margR margL" component={RouterLink} to="/TextToAudio">
+          <CardContent>
+            <div>
+              <img className="width_icon" alt="weather forecasting" src="/microphone-svgrepo-com.svg"></img>
+            </div>
+            <Typography variant="h6">صوت به متن</Typography>
+          </CardContent>
+        </Card>
+      </div>
       <div className="container_discription">
-        <h2 className="h2_dis h2_padding H2_font"></h2>
+        <Typography variant="h4" className="titleDes">توضیحات</Typography>
 
         <DescriptionService
           Desh3="اخبار هوش مصنوعی"
@@ -104,41 +112,9 @@ export default function MainPage() {
         />
 
       </div>
-      {/* فوتر */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="div-cursor">
-            <Link to="/">
-              <img className="icon-profile" src="/icons8-home.svg" alt="home" />
-            </Link>
-            <p>خانه</p>
-          </div>
-          <div className="div-cursor">
-            <Link to="/Setting">
-              <img className="icon-profile" src="/icons8-setting.svg" alt="setting" />
-            </Link>
-            <p>تنظیمات</p>
-          </div>
-          <div className="div-cursor">
-            <button
-            
-              onClick={toggleMenu}
-              style={{ background: "none", border: "none", padding: 0, cursor: "pointer", alignSelf: "start"}}
-            >
-              <img className="icon-profile" src="/icon-user.svg" alt="profile" />
-            </button>
-            <p>منو</p>
 
-          </div>
-          <div className="div-cursor">
-            <Link to="/About">
-              <img className="icon-profile" src="/icons8-about.svg" alt="about" />
-            </Link>
-            <p>درباره</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </Box>
+      <Typography></Typography>
+    </Box>
   );
 }
-

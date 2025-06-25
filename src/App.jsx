@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/MainPage';
 import NewsToday from './components/NewsToday';
 import WeatherForecast from './components/WeatherForecast';
-import ChangeTextToAudio from './components/Change text to audio';
+import ChangeTextToAudio from './components/ChangeTextToAudio';
 import About from './components/About';
 import Setting from './components/Setting';
 import Notification from './components/Notification';
