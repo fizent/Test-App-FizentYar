@@ -39,7 +39,7 @@ export default function Setting() {
       </Typography>
 
       <Typography variant="h5" className="type_mg sub_page_title">
-        تنظیمات موجود
+        تنظیمات موجود:
       </Typography>
 
       <div className="sub_page_title" style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "12px" }}>
