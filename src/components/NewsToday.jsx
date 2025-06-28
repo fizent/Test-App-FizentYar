@@ -9,6 +9,7 @@ import {
   Button,
   CircularProgress,
   Divider,
+  Alert,
 } from "@mui/material";
 import Back_Btn from "./Back";
 import FooterCom from "./FooterC";
@@ -48,7 +49,7 @@ export default function NewsToday() {
         setTomorrow("");
       }
     } catch (error) {
-      alert("در دریافت خبرها مشکل پیش آمد، لطفاً مجدد تلاش کنید.");
+      <Alert severity="warning" variant="outlined">هشدار!</Alert>
     } finally {
       setLoading(false);
     }

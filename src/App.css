@@ -54,6 +54,15 @@ html {
 .font_text {
   font-family: Dirooz;
 }
+
+.Fiz {
+  color: blueviolet;
+}
+.title_page {
+  text-align: center;
+  padding-bottom: 40px;
+
+}
 h1,h2,h3,h4,h5,h6,p,div,.font_text {
   font-family: Dirooz;
 }
@@ -84,7 +93,11 @@ p {
   font-size: 20px;
 }
 .container_discription {
-  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
 .container_desc {
   margin-top: 20px;
@@ -116,8 +129,7 @@ p {
   flex-direction: row; /* منو بره راست، لوگو بیاد چپ */
   justify-content: space-between;
   align-items: center;
-  background-color: #1E1E2F;
-  border-bottom: 2px solid var(--steel-blue);
+  background-color: #121212;
 }
 
 .logo_size {
@@ -198,18 +210,19 @@ p {
 }
 .container-center {
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   justify-content: center;
 }
 
 .container_card_box {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 100px;
+}
+
+.sub_page_title {
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 .back_btn {
@@ -229,6 +242,21 @@ p {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 480px) {
   .Card {
     width: 150px;
@@ -239,6 +267,7 @@ p {
 
   .Card_for {
     width: 100%;
+
   }
 
   
@@ -275,3 +304,11 @@ a {
   margin: 20px;
 }
 
+.pd80 {
+  padding-bottom: 80px;
+}
+
+.icon_back {
+  width: 24px;
+  height: 24px;
+}
