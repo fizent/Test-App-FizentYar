@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import FooterCom from "./FooterC";
 import Back_Btn from "./Back";
 
 export default function WeatherForecast() {
@@ -60,7 +59,9 @@ export default function WeatherForecast() {
       }
     } catch {
       setError("خطا در دریافت اطلاعات هوا.");
-      setTemp(""); setWeather(""); setDescription("");
+      setTemp("");
+      setWeather("");
+      setDescription("");
     } finally {
       setLoading(false);
     }
@@ -68,12 +69,17 @@ export default function WeatherForecast() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (city.trim()) await WeatherNew();
-    else setError("نام شهر را وارد کنید.");
+    const cleanCity = city.trim();
+    if (cleanCity) {
+      setCity(cleanCity);
+      await WeatherNew();
+    } else {
+      setError("نام شهر را وارد کنید.");
+    }
   };
 
   return (
-    <Box sx={{ px: 2, py: 3, maxWidth: 600, mx: "auto", marginTop: "150px"}}>
+    <Box sx={{ px: 2, py: 3, maxWidth: 600, mx: "auto", mt: "80px" }}>
       <Back_Btn />
       <Typography variant="h4" textAlign="center" fontWeight={600} mb={2}>
         پیش‌بینی هوا
@@ -86,7 +92,7 @@ export default function WeatherForecast() {
             variant="outlined"
             fullWidth
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setCity(e.target.value.trimStart())}
             sx={{
               mb: 2,
               input: { color: "#fff" },
@@ -102,31 +108,89 @@ export default function WeatherForecast() {
             variant="contained"
             type="submit"
             disabled={loading}
-            sx={{ py: 1.5, borderRadius: 2, backgroundColor: "#2979ff", "&:hover": { backgroundColor: "#1565c0" } }}
+            sx={{
+              py: 1.5,
+              borderRadius: 2,
+              backgroundColor: "#2979ff",
+              "&:hover": { backgroundColor: "#1565c0" },
+            }}
           >
             {loading ? <CircularProgress size={22} color="inherit" /> : "جستجو"}
           </Button>
         </form>
 
-        {error && <Typography color="error" mt={2}>{error}</Typography>}
+        {error && (
+          <Typography color="error" mt={2}>
+            {error}
+          </Typography>
+        )}
 
         {temp && (
-          <Box mt={3}>
-            <Typography variant="h5">دما: {temp}°C</Typography>
-            <Typography variant="h6">
-              وضعیت: <img src={weatherIcons[weather] || weatherIcons.Clear} alt={weather} width={20} /> {weather}
-            </Typography>
-            <Typography>توضیحات: {description}</Typography>
+          <Box mt={3} display="flex" gap={2} flexWrap="wrap" justifyContent="center">
+            {/* دما */}
+            <Card
+              sx={{
+                background: "#121212",
+                color: "#fff",
+                px: 2.5,
+                py: 2,
+                borderRadius: 3,
+                minWidth: 120,
+                textAlign: "center",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Typography variant="h6" fontWeight="bold">دما</Typography>
+              <Typography variant="h5">{temp}°C</Typography>
+            </Card>
+
+            {/* وضعیت */}
+            <Card
+              sx={{
+                background: "#121212",
+                color: "#fff",
+                px: 2.5,
+                py: 2,
+                borderRadius: 3,
+                minWidth: 120,
+                textAlign: "center",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Typography variant="h6" fontWeight="bold">وضعیت</Typography>
+              <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
+                <img
+                  src={weatherIcons[weather] || weatherIcons.Clear}
+                  alt={weather}
+                  width={24}
+                />
+                <Typography>{weather}</Typography>
+              </Box>
+            </Card>
+
+            {/* توضیحات */}
+            <Card
+              sx={{
+                background: "#121212",
+                color: "#fff",
+                px: 2.5,
+                py: 2,
+                borderRadius: 3,
+                minWidth: 160,
+                textAlign: "center",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Typography variant="h6" fontWeight="bold">توضیحات</Typography>
+              <Typography>{description}</Typography>
+            </Card>
           </Box>
         )}
       </Card>
 
+      {/* نقشه */}
       <Box mt={3} sx={{ height: 300, borderRadius: 3, overflow: "hidden", boxShadow: 3 }}>
-        <MapContainer
-          center={[lat, lon]}
-          zoom={7}
-          style={{ height: "100%", width: "100%" }}
-        >
+        <MapContainer center={[lat, lon]} zoom={7} style={{ height: "100%", width: "100%" }}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <TileLayer
             url={`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${api_key}`}
@@ -135,8 +199,6 @@ export default function WeatherForecast() {
           <FlyToLocation lat={lat} lon={lon} />
         </MapContainer>
       </Box>
-
-      {/* <FooterCom /> */}
     </Box>
   );
 }

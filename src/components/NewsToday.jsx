@@ -56,7 +56,7 @@ export default function NewsToday() {
   };
 
   return (
-    <Box sx={{ px: 2, py: 2, maxWidth: "600px", mx: "auto", marginTop: "150px"}}>
+    <Box sx={{ px: 2, py: 2, maxWidth: "600px", mx: "auto", marginTop: "80px"}}>
       <Back_Btn />
       <Typography variant="h4" fontWeight={700} textAlign="center" mt={2}>
         دستیار اخبار

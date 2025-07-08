@@ -7,6 +7,7 @@ import About from './components/About';
 import Setting from './components/Setting';
 import Notification from './components/Notification';
 import InfoApp from './components/InformationApp';
+import CalendarWidget from './components/Calender';
 import './App.css'
 import { useEffect, useState } from 'react';
 function App() {  
@@ -40,6 +41,7 @@ function App() {
         <Route path='/Setting' element={<Setting/>}></Route>
         <Route path='/Notification' element={<Notification/>}></Route>
         <Route path='/InformationApp' element={<InfoApp/>}></Route>
+        <Route path='/CalendarWidget' element={<CalendarWidget/>}></Route>
 
 
       </Routes>  

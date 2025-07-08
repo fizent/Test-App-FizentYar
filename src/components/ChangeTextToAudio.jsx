@@ -57,7 +57,7 @@ export default function ChangeTextToAudio() {
   };
 
   return (
-    <Box sx={{ px: 2, py: 3, maxWidth: 600, mx: "auto", marginTop: "150px" }}>
+    <Box sx={{ px: 2, py: 3, maxWidth: 600, mx: "auto", marginTop: "80px" }}>
       <Back_Btn />
       <Typography variant="h4" fontWeight={700} textAlign="center" mt={2}>
         تبدیل صدا به متن
