@@ -12,7 +12,7 @@ import {
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Back_Btn from "./Back";
-
+import FooterC from "./FooterC";
 export default function WeatherForecast() {
   const [city, setCity] = useState("");
   const [temp, setTemp] = useState("");
@@ -199,6 +199,7 @@ export default function WeatherForecast() {
           <FlyToLocation lat={lat} lon={lon} />
         </MapContainer>
       </Box>
+      <FooterC />
     </Box>
   );
 }

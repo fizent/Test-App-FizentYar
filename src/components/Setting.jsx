@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Back_Btn from "./Back";
 import { Typography, FormControlLabel, Switch } from "@mui/material";
-
+import FooterC from "./FooterC";
 export default function Setting() {
   const [privacy, setPrivacy] = useState(false);
   const [notifications, setNotifications] = useState(false);
@@ -61,6 +61,7 @@ export default function Setting() {
           </Link>
         </Typography>
       </div>
+      <FooterC />
     </div>
   );
 }

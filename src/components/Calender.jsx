@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import { Box, Typography, Paper } from "@mui/material";
 import "./calendar-custom.css";
 import Back_Btn from "./Back";
-
+import FooterC from "./FooterC";
 export default function CalendarWidget() {
   const [value, setValue] = useState(new Date());
 
@@ -37,6 +37,7 @@ export default function CalendarWidget() {
           </strong>
         </Typography>
       </Paper>
+      <FooterC />
     </Box>
   );
 }

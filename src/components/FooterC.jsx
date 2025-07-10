@@ -1,31 +1,33 @@
-import { Link } from "react-router-dom";
-export default function FooterCom() {
-    return(
-        <div className="absolut">
-            <footer className="footer">
-                <div className="footer-container">
-                  <div className="div-cursor">
-                    <Link to="/">
-                      <img className="icon-profile" src="/icons8-home.svg" alt="" />
-                    </Link>
-                    <p>خانه</p>
-                  </div>
-                  <div className="div-cursor">
-                    <Link to="/Setting">
-                      <img className="icon-profile" src="/icons8-setting.svg" alt="" />
-                    </Link>
-                    <p>تنظیمات</p>
-                  </div>
-                  <div className="div-cursor">
-                    <Link to="/About">
-                      <img className="icon-profile" src="/icons8-about.svg" alt="" />
-                    </Link>
-                    <p>درباره</p>
-                  </div>
-                </div>
-            </footer>
-        </div>
+import React, { useState } from "react";
+import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import InfoIcon from "@mui/icons-material/Info";
+import { useNavigate } from "react-router-dom";
 
-    )
+
+export default function FooterC() {
+  const [value, setValue] = useState(0)
+  const navigate = useNavigate()
+
+  function Gowhere(event,value) {
+    setValue(value)
+    if(value===0)navigate("/")
+    else if(value===1)navigate("/Setting")
+    else if(value===2)navigate("/About")
+  }
+  return(
+    <Paper className="footer-paper">
+      <BottomNavigation
+        value={value}
+        onChange={Gowhere}
+        className="footer-nav"
+        showLabels
+      >
+      <BottomNavigationAction label="خانه" icon={<HomeIcon />} />
+      <BottomNavigationAction label="تنظیمات" icon={<SettingsIcon />} />
+      <BottomNavigationAction label="درباره" icon={<InfoIcon />} />
+      </BottomNavigation>
+    </Paper>
+  )
 }
-

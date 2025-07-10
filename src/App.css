@@ -329,3 +329,33 @@ a {
   width: 24px;
   height: 24px;
 }
+
+
+
+
+
+
+/* footer */
+
+.footer-paper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #121212;
+  color: #fff;
+  border-top: 1px solid #333;
+  z-index: 1000;
+}
+
+.footer-nav {
+  background-color: #121212;
+}
+
+.footer-nav .Mui-selected {
+  color: #2979ff;
+}
+
+.footer-nav .MuiBottomNavigationAction-label {
+  font-size: 0.75rem;
+}

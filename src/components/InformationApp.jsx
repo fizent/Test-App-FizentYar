@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Back_Btn from './Back';
 import FooterCom from './FooterC';
 import { Card, CardContent, Typography } from '@mui/material';
-
+import FooterC from './FooterC';
 export default function InfoApp() {
   return (
     <div className="container_card_box">
@@ -20,6 +20,7 @@ export default function InfoApp() {
       </Card>
 
       {/* <FooterCom /> */}
+      <FooterC />
     </div>
   );
 }

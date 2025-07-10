@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Back_Btn from "./Back";
 import FooterCom from "./FooterC";
 import { Typography } from "@mui/material";
-
+import FooterC from "./FooterC";
 export default function About() {
   return (
     <div className="container_card_box">
@@ -93,6 +93,7 @@ export default function About() {
           </ul>
         </Typography>
       </div>
+      <FooterC />
 
       {/* <FooterCom /> */}
     </div>

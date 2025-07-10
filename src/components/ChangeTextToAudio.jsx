@@ -9,7 +9,7 @@ import {
   Alert,
 } from "@mui/material";
 import Back_Btn from "./Back";
-
+import FooterC from "./FooterC";
 export default function ChangeTextToAudio() {
   const [text, setText] = useState("هیچ متنی وجود ندارد. لطفاً روی شروع کلیک کنید و چیزی بگویید");
   const [isListening, setIsListening] = useState(false);
@@ -113,6 +113,7 @@ export default function ChangeTextToAudio() {
       </Snackbar>
 
       {/* <FooterCom /> */}
+      <FooterC />
     </Box>
   );
 }

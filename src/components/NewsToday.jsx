@@ -12,8 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import Back_Btn from "./Back";
-import FooterCom from "./FooterC";
-
+import FooterC from "./FooterC";
 export default function NewsToday() {
   const [query, setQuery] = useState("");
   const [articles, setArticles] = useState([]);
@@ -149,6 +148,7 @@ export default function NewsToday() {
       )}
 
       {/* <FooterCom /> */}
+      <FooterC/>
     </Box>
   );
 }

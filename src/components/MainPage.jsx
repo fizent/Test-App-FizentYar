@@ -12,13 +12,18 @@ import {
   ListItemText,
   Card,
   CardContent,
-  Fade
+  Fade,
+  Snackbar,
+  Alert,
 } from "@mui/material";
-
+import FooterC from "./FooterC";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import SettingsIcon from "@mui/icons-material/Settings";
 import InfoIcon from "@mui/icons-material/Info";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import ShareIcon from "@mui/icons-material/Share";
+import PersonIcon from '@mui/icons-material/Person';
 
 import { Newspaper, Mic, Calendar, Cloud } from "lucide-react";
 
@@ -41,6 +46,7 @@ export default function MainPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [descIndex, setDescIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -54,6 +60,30 @@ export default function MainPage() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  function ClickShare() {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "FizentYar",
+          text: "اشتراک گذاری برنامه",
+          url: "https://myket.ir/app/app.vercel.test_app_fizent_yar.twa",
+        })
+        .then(() => {
+          setSnackbarOpen(true);
+        })
+        .catch(() => {
+          console.error("خطا در اشتراک گذاری");
+        });
+    } else {
+      alert("مرورگر شما پشتیبانی نمی کند");
+    }
+  }
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbarOpen(false);
+  };
 
   return (
     <Box>
@@ -71,24 +101,42 @@ export default function MainPage() {
 
       {/* Drawer */}
       <Drawer
-        sx={{ '& .MuiDrawer-paper': { backgroundColor: '#1e1e1e', color: '#ffffff' } }}
+        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#1e1e1e", color: "#ffffff" } }}
         anchor="right"
         open={isMenuOpen}
         onClose={toggleMenu}
       >
-        <List onClick={toggleMenu}>
-          <ListItem className="drawer" button component={RouterLink} to="/">
-            <HomeIcon sx={{ mr: 1 }} />
-            <ListItemText sx={{ mr: 2 }} primary="بازگشت" />
+        <List>
+          <ListItem
+            className="drawer"
+            button
+            component={RouterLink}
+            to="/"
+            onClick={toggleMenu}
+          >
+            <RefreshIcon sx={{ mr: 1 }} />
+            <ListItemText sx={{ mr: 2 }} primary="تازه سازی" />
           </ListItem>
-          <ListItem className="drawer" button component={RouterLink} to="/Setting">
-            <SettingsIcon sx={{ mr: 1 }} />
-            <ListItemText primary="تنظیمات" />
+
+          <ListItem className="drawer" button onClick={() => { toggleMenu(); ClickShare(); }}>
+            <ShareIcon sx={{ mr: 1 }} />
+            <ListItemText primary="اشتراک" />
           </ListItem>
-          <ListItem className="drawer" button component={RouterLink} to="/About">
-            <InfoIcon sx={{ mr: 1 }} />
-            <ListItemText primary="درباره" />
+
+
+          <ListItem
+            className="drawer"
+            button
+            component="a"
+            href="https://fazelzare.liara.run/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={toggleMenu}
+          >
+            <PersonIcon sx={{ mr: 1 }} />
+            <ListItemText primary="سازنده" />
           </ListItem>
+
           <div className="div_myket_mg">
             <a href="https://myket.ir/app/app.vercel.test_app_fizent_yar.twa">
               <img src="/myket.png" alt="مایکت" id="myket" />
@@ -130,7 +178,7 @@ export default function MainPage() {
         <div style={{ marginTop: 32, marginBottom: 80 }}>
           <div className="container-center">
             {/* کارت اخبار */}
-            <Card className="Card margR margL" component={RouterLink} to="/NewsToday" >
+            <Card className="Card margR margL" component={RouterLink} to="/NewsToday">
               <CardContent className="card-content">
                 <Newspaper size={48} color="#1976d2" />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
@@ -140,7 +188,7 @@ export default function MainPage() {
             </Card>
 
             {/* کارت تبدیل متن */}
-            <Card className="Card margR margL" component={RouterLink} to="/TextToAudio" >
+            <Card className="Card margR margL" component={RouterLink} to="/TextToAudio">
               <CardContent className="card-content">
                 <Mic size={48} color="#9c27b0" />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
@@ -152,7 +200,7 @@ export default function MainPage() {
 
           <div className="container-center" style={{ marginTop: 24 }}>
             {/* کارت تقویم */}
-            <Card className="Card margR margL" component={RouterLink} to="/CalendarWidget" >
+            <Card className="Card margR margL" component={RouterLink} to="/CalendarWidget">
               <CardContent className="card-content">
                 <Calendar size={48} color="#388e3c" />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
@@ -162,7 +210,7 @@ export default function MainPage() {
             </Card>
 
             {/* کارت آب و هوا */}
-            <Card className="Card margR margL" component={RouterLink} to="/WeatherForecast" >
+            <Card className="Card margR margL" component={RouterLink} to="/WeatherForecast">
               <CardContent className="card-content">
                 <Cloud size={48} color="#f57c00" />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
@@ -173,6 +221,20 @@ export default function MainPage() {
           </div>
         </div>
       </Box>
+
+      <FooterC />
+
+      {/* Snackbar برای پیام اشتراک گذاری موفق */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert severity="success" variant="filled" sx={{ width: "50%" }}>
+          اشتراک‌گذاری موفق بود!
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
