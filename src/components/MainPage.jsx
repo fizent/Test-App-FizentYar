@@ -112,7 +112,7 @@ export default function MainPage() {
             button
             component={RouterLink}
             to="/"
-            onClick={toggleMenu}
+            onClick={()=> {window.location.reload()}}
           >
             <RefreshIcon sx={{ mr: 1 }} />
             <ListItemText sx={{ mr: 2 }} primary="تازه سازی" />
