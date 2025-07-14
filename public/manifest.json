@@ -6,8 +6,9 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#001f3d",
-  "version": "2.0.0.0",  
+  "version": "2.0.0.0",
   "theme_color": "#191970",
+  "twa_prefer_uri": "https://fizentyar.com",
   "icons": [
     {
       "src": "/FizentYar192.png",
