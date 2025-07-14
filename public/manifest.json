@@ -8,7 +8,7 @@
   "background_color": "#001f3d",
   "version": "2.0.0.0",
   "theme_color": "#191970",
-  "twa_prefer_uri": "https://fizentyar.com",
+  "twa_prefer_uri": "https://test-app-fizent-yar.vercel.app/",
   "icons": [
     {
       "src": "/FizentYar192.png",
