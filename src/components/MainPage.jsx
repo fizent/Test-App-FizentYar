@@ -30,7 +30,7 @@ import { Newspaper, Mic, Calendar, Cloud } from "lucide-react";
 const descriptionSlides = [
   {
     Desh3: "اخبار هوش مصنوعی",
-    Desp: "این ابزار به شما کمک می‌کند که با کمک هوش مصنوعی بتوانید به به‌روزترین و دقیق‌ترین اخبار دسترسی داشته باشید.",
+    Desp: "این ابزار به شما کمک می‌کند که با کمک هوش مصنوعی بتوانید به‌روزترین و دقیق‌ترین اخبار دسترسی داشته باشید.",
   },
   {
     Desh3: "تبدیل صوت به متن",
@@ -39,6 +39,10 @@ const descriptionSlides = [
   {
     Desh3: "پیش‌بینی وضعیت هوا",
     Desp: "با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، این ابزار پیش‌بینی دقیق دما، بارش و کیفیت هوا را برای شهرهای مختلف ارائه می‌دهد.",
+  },
+  {
+    Desh3: "تقویم",
+    Desp: "با بخش تقویم در برنامه‌، می‌توانید رویدادها، قرار ملاقات‌ها و برنامه‌های مهم خود را مدیریت کنید. همچنین، پیش‌بینی‌های آب‌وهوا، رویدادهای روزانه و برنامه‌ریزی‌های فردی را در یک مکان واحد داشته باشید تا همیشه آماده و منظم باشید.",
   },
 ];
 
@@ -101,7 +105,7 @@ export default function MainPage() {
 
       {/* Drawer */}
       <Drawer
-        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#1e1e1e", color: "#ffffff" } }}
+        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#1e1e1e", color: "#ffffff", width:"60%" } }}
         anchor="right"
         open={isMenuOpen}
         onClose={toggleMenu}
@@ -115,12 +119,12 @@ export default function MainPage() {
             onClick={()=> {window.location.reload()}}
           >
             <RefreshIcon sx={{ mr: 1 }} />
-            <ListItemText sx={{ mr: 2 }} primary="تازه سازی" />
+            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="تازه سازی" />
           </ListItem>
 
           <ListItem className="drawer" button onClick={() => { toggleMenu(); ClickShare(); }}>
             <ShareIcon sx={{ mr: 1 }} />
-            <ListItemText primary="اشتراک" />
+            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="اشتراک" />
           </ListItem>
 
 
@@ -134,7 +138,7 @@ export default function MainPage() {
             onClick={toggleMenu}
           >
             <PersonIcon sx={{ mr: 1 }} />
-            <ListItemText primary="سازنده" />
+            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="سازنده" />
           </ListItem>
 
           <div className="div_myket_mg">

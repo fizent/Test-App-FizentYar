@@ -221,6 +221,7 @@ p {
 
 .time_hi {
   color: var(--steel-blue);
+  text-align: center;
 }
 .container-center {
   margin-top: 20px;

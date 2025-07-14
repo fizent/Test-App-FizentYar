@@ -5,6 +5,7 @@ import { Box, Typography, Paper } from "@mui/material";
 import "./calendar-custom.css";
 import Back_Btn from "./Back";
 import FooterC from "./FooterC";
+import TimeHi from "./TimeHi";
 export default function CalendarWidget() {
   const [value, setValue] = useState(new Date());
 
@@ -36,6 +37,8 @@ export default function CalendarWidget() {
             {value.toLocaleDateString("fa-IR")}
           </strong>
         </Typography>
+
+        <TimeHi></TimeHi>
       </Paper>
       <FooterC />
     </Box>
