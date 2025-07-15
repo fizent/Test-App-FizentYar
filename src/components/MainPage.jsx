@@ -16,33 +16,34 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
-import FooterC from "./FooterC";
+
 import MenuIcon from "@mui/icons-material/Menu";
-import HomeIcon from "@mui/icons-material/Home";
-import SettingsIcon from "@mui/icons-material/Settings";
-import InfoIcon from "@mui/icons-material/Info";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import ShareIcon from "@mui/icons-material/Share";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import LockIcon from "@mui/icons-material/Lock";
 
-import { Newspaper, Mic, Calendar, Cloud } from "lucide-react";
+import { Calendar, Cloud } from "lucide-react";
+import FooterC from "./FooterC";
 
+/* --- توضیحات اسلایدر بالای کارت‌ها --- */
 const descriptionSlides = [
   {
-    Desh3: "اخبار هوش مصنوعی",
-    Desp: "این ابزار به شما کمک می‌کند که با کمک هوش مصنوعی بتوانید به‌روزترین و دقیق‌ترین اخبار دسترسی داشته باشید.",
+    Desh3: "تولید رمز عبور",
+    Desp: "رمزهای امن و تصادفی با طول و ترکیب دلخواه بسازید و تنها با یک کلیک در کلیپ‌بورد کپی کنید.",
   },
   {
-    Desh3: "تبدیل صوت به متن",
-    Desp: "کافی است فایل صوتی یا صدای زنده را بدهید؛ سرویس در چند ثانیه آن را به متن دقیق فارسی یا هر زبان دلخواه تبدیل می‌کند.",
+    Desh3: "مبدل واحدها",
+    Desp: "طول، وزن، دما و ارزهای رایج را تنها با چند کلیک به واحد دلخواه تبدیل کنید؛ سریع، دقیق و بدون نیاز به اینترنت.",
   },
   {
     Desh3: "پیش‌بینی وضعیت هوا",
-    Desp: "با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، این ابزار پیش‌بینی دقیق دما، بارش و کیفیت هوا را برای شهرهای مختلف ارائه می‌دهد.",
+    Desp: "با استفاده از مدل‌های یادگیری ماشین و داده‌های به‌روز، پیش‌بینی دقیق دما، بارش و کیفیت هوا برای شهرهای مختلف ارائه می‌شود.",
   },
   {
     Desh3: "تقویم",
-    Desp: "با بخش تقویم در برنامه‌، می‌توانید رویدادها، قرار ملاقات‌ها و برنامه‌های مهم خود را مدیریت کنید. همچنین، پیش‌بینی‌های آب‌وهوا، رویدادهای روزانه و برنامه‌ریزی‌های فردی را در یک مکان واحد داشته باشید تا همیشه آماده و منظم باشید.",
+    Desp: "رویدادها، قرار ملاقات‌ها و برنامه‌های مهم خود را مدیریت کنید و همیشه منظم باشید.",
   },
 ];
 
@@ -51,50 +52,64 @@ export default function MainPage() {
   const [descIndex, setDescIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState("");
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleMenu = () => setIsMenuOpen((p) => !p);
 
+  /* --- چرخش خودکار اسلایدر --- */
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        setDescIndex((prev) => (prev + 1) % descriptionSlides.length);
+        setDescIndex((p) => (p + 1) % descriptionSlides.length);
         setFade(true);
       }, 400);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  function ClickShare() {
+  /* --- اشتراک‌گذاری --- */
+  const handleShare = () => {
+    const url = "https://myket.ir/app/app.vercel.test_app_fizent_yar.twa";
+    const text = "اپ FizentYar را امتحان کن!";
+
+    // اگر اپ داخل Median اجرا میشه
+    if (window.median && median.share && typeof median.share.sharePage === "function") {
+      median.share.sharePage({ url, text });
+      setSnackbarMsg("اشتراک‌گذاری موفق بود!");
+      setSnackbarOpen(true);
+      return;
+    }
+
+    // اگر مرورگر از Web Share API پشتیبانی کنه
     if (navigator.share) {
       navigator
-        .share({
-          title: "FizentYar",
-          text: "اشتراک گذاری برنامه",
-          url: "https://myket.ir/app/app.vercel.test_app_fizent_yar.twa",
-        })
+        .share({ title: "FizentYar", text, url })
         .then(() => {
+          setSnackbarMsg("اشتراک‌گذاری موفق بود!");
           setSnackbarOpen(true);
         })
-        .catch(() => {
-          console.error("خطا در اشتراک گذاری");
-        });
-    } else {
-      alert("مرورگر شما پشتیبانی نمی کند");
+        .catch(() => console.error("خطا در اشتراک گذاری"));
+      return;
     }
-  }
 
-  const handleCloseSnackbar = (event, reason) => {
-    if (reason === "clickaway") return;
-    setSnackbarOpen(false);
+    // fallback: کپی لینک در کلیپ‌بورد و نمایش پیام
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        setSnackbarMsg("لینک در کلیپ‌بورد کپی شد!");
+        setSnackbarOpen(true);
+      });
+    } else {
+      alert("مرورگر شما پشتیبانی نمی‌کند");
+    }
   };
 
   return (
     <Box>
-      {/* Top AppBar */}
+      {/* ---------- AppBar ---------- */}
       <AppBar className="container_app">
         <Toolbar className="header_toolbar">
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={toggleMenu}>
+          <IconButton edge="end" color="inherit" onClick={toggleMenu}>
             <MenuIcon />
           </IconButton>
           <div className="Fiz_cont">
@@ -103,55 +118,48 @@ export default function MainPage() {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer */}
+      {/* ---------- Drawer ---------- */}
       <Drawer
-        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#1e1e1e", color: "#ffffff", width:"60%" } }}
+        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#1e1e1e", color: "#ffffff", width: "60%" } }}
         anchor="right"
         open={isMenuOpen}
         onClose={toggleMenu}
       >
         <List>
-          <ListItem
-            className="drawer"
-            button
-            component={RouterLink}
-            to="/"
-            onClick={()=> {window.location.reload()}}
-          >
+          <ListItem button onClick={() => window.location.reload()} className="drawer">
             <RefreshIcon sx={{ mr: 1 }} />
-            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="تازه سازی" />
+            <ListItemText sx={{ mr: 2, textAlign: "start" }} primary="تازه‌سازی" />
           </ListItem>
 
-          <ListItem className="drawer" button onClick={() => { toggleMenu(); ClickShare(); }}>
+          <ListItem button onClick={() => { toggleMenu(); handleShare(); }} className="drawer">
             <ShareIcon sx={{ mr: 1 }} />
-            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="اشتراک" />
+            <ListItemText sx={{ mr: 2, textAlign: "start" }} primary="اشتراک" />
           </ListItem>
-
 
           <ListItem
-            className="drawer"
             button
             component="a"
             href="https://fazelzare.liara.run/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={toggleMenu}
+            className="drawer"
           >
             <PersonIcon sx={{ mr: 1 }} />
-            <ListItemText sx={{ mr: 2, textAlign:"start"}} primary="سازنده" />
+            <ListItemText sx={{ mr: 2, textAlign: "start" }} primary="سازنده" />
           </ListItem>
 
           <div className="div_myket_mg">
-            <a href="https://myket.ir/app/app.vercel.test_app_fizent_yar.twa">
+            <a href="https://myket.ir/app/co.median.android.xknjwa">
               <img src="/myket.png" alt="مایکت" id="myket" />
             </a>
           </div>
         </List>
       </Drawer>
 
-      {/* Main Content */}
+      {/* ---------- محتوای اصلی ---------- */}
       <Box className="container_card" sx={{ mt: 12, mb: 10 }}>
-        {/* اسلایدر توضیحاتی بالای کارت‌ها */}
+        {/* اسلایدر توضیحی بالای کارت‌ها */}
         <Box
           sx={{
             px: 3,
@@ -178,30 +186,32 @@ export default function MainPage() {
           </Fade>
         </Box>
 
-        {/* کارت‌ها */}
+        {/* ---------- کارت‌ها ---------- */}
         <div style={{ marginTop: 32, marginBottom: 80 }}>
+          {/* ردیف اول */}
           <div className="container-center">
-            {/* کارت اخبار */}
-            <Card className="Card margR margL" component={RouterLink} to="/NewsToday">
+            {/* کارت تولید رمز عبور */}
+            <Card className="Card margR margL" component={RouterLink} to="/PasswordGenerator">
               <CardContent className="card-content">
-                <Newspaper size={48} color="#1976d2" />
+                <LockIcon sx={{ fontSize: 48, color: "#1976d2" }} />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
-                  اخبار
+                  رمز عبور
                 </Typography>
               </CardContent>
             </Card>
 
-            {/* کارت تبدیل متن */}
-            <Card className="Card margR margL" component={RouterLink} to="/TextToAudio">
+            {/* کارت مبدل واحدها */}
+            <Card className="Card margR margL" component={RouterLink} to="/UnitConvert">
               <CardContent className="card-content">
-                <Mic size={48} color="#9c27b0" />
+                <CompareArrowsIcon sx={{ fontSize: 48, color: "#9c27b0" }} />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
-                  تبدیل متن
+                  تبدیل واحد
                 </Typography>
               </CardContent>
             </Card>
           </div>
 
+          {/* ردیف دوم */}
           <div className="container-center" style={{ marginTop: 24 }}>
             {/* کارت تقویم */}
             <Card className="Card margR margL" component={RouterLink} to="/CalendarWidget">
@@ -228,15 +238,15 @@ export default function MainPage() {
 
       <FooterC />
 
-      {/* Snackbar برای پیام اشتراک گذاری موفق */}
+      {/* Snackbar اشتراک‌گذاری */}
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}
-        onClose={handleCloseSnackbar}
+        onClose={() => setSnackbarOpen(false)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert severity="success" variant="filled" sx={{ width: "50%" }}>
-          اشتراک‌گذاری موفق بود!
+          {snackbarMsg || "اشتراک‌گذاری موفق بود!"}
         </Alert>
       </Snackbar>
     </Box>
