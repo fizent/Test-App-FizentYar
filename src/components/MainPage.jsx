@@ -205,7 +205,7 @@ export default function MainPage() {
               <CardContent className="card-content">
                 <CompareArrowsIcon sx={{ fontSize: 48, color: "#9c27b0" }} />
                 <Typography variant="h6" className="card-text" sx={{ mt: 1 }}>
-                  تبدیل واحد
+                   تبدیل ها
                 </Typography>
               </CardContent>
             </Card>

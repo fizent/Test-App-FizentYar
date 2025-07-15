@@ -13,7 +13,8 @@ import {
   InputLabel,
   Select,
 } from "@mui/material";
-
+import Back_Btn from "./Back";
+import FooterC from "./FooterC";
 export default function UnitConverter() {
   /* ---------- داده‌های ثابت ---------- */
   const categories = {
@@ -85,6 +86,7 @@ export default function UnitConverter() {
   /* ---------- رندر ---------- */
   return (
     <Box sx={{ px: 2, py: 3, maxWidth: 600, mx: "auto", mt: "80px" }}>
+      <Back_Btn></Back_Btn>
       <Typography variant="h4" fontWeight={700} textAlign="center" mb={2}>
         مبدّل واحدها
       </Typography>
@@ -215,6 +217,7 @@ export default function UnitConverter() {
           کپی شد!
         </Alert>
       </Snackbar>
+      <FooterC />
     </Box>
   );
 }
