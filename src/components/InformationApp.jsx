@@ -14,7 +14,7 @@ export default function InfoApp() {
             اطلاعات برنامه
           </Typography>
           <Typography variant="subtitle1">
-            در ورژن 3.0.0 هستید
+           در ورژن 1.0.3 هستید
           </Typography>
         </CardContent>
       </Card>
