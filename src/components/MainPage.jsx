@@ -148,12 +148,7 @@ export default function MainPage() {
             <PersonIcon sx={{ mr: 1 }} />
             <ListItemText sx={{ mr: 2, textAlign: "start" }} primary="سازنده" />
           </ListItem>
-
-          <div className="div_myket_mg">
-            <a href="https://myket.ir/app/co.median.android.xknjwa">
-              <img src="/myket.png" alt="مایکت" id="myket" />
-            </a>
-          </div>
+          
         </List>
       </Drawer>
 
