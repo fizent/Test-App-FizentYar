@@ -70,8 +70,8 @@ export default function MainPage() {
 
   /* --- اشتراک‌گذاری --- */
   const handleShare = () => {
-    const url = "https://myket.ir/app/app.vercel.test_app_fizent_yar.twa";
-    const text = "اپ FizentYar را امتحان کن!";
+    const url = "?";
+    const text = "اپ FizentYar رو از اپ استور های ایرانی دانلود کن";
 
     // اگر اپ داخل Median اجرا میشه
     if (window.median && median.share && typeof median.share.sharePage === "function") {
